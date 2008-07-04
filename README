@@ -1,0 +1,8 @@
+goodbrowserbadbrowser is a very simple browser detection script that powers the amazing goodbrowserbadbrowser.com
+
+our plan is to one day provide unobtrusive browser detection badges that you can display on your site to encourage upgrades to good browsers.
+
+=== installation ===
+
+get sinatra: http://github.com/bmizerany/sinatra/tree/master
+run sinatra on edge as described in that file.

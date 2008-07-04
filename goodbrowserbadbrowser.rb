@@ -51,6 +51,15 @@ get '/good' do
   haml :index
 end
 
+get '/main.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass :main
+end
+get '/mobile_safari.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass :mobile_safari
+end
+ 
 use_in_file_templates!
 
 __END__
@@ -64,89 +73,10 @@ __END__
       = @goodorbad
       browser
     %link{:rel => "shortcut icon", :href => "/favicon_"+"#{@goodorbad}"+".ico"}
+    %link{:href=>"/main.css", :media=>"all", :rel=>"stylesheet", :type=>"text/css"}/
     - if mobile_safari?
+      %link{:href=>"/mobile_safari.css", :media=>"all", :rel=>"stylesheet", :type=>"text/css"}/
       %meta{:name => "viewport", :content => "width = device-width, initial-scale = 1.0"}/
-    %style{:type => "text/css"}
-      :plain
-        * {
-          margin:0;
-          padding:0;
-        }
-        body {
-          text-align:center;
-          padding-top:8em;
-          color:#fff;
-          font-size:80%;
-          background-color:#777;
-          font-family:helvetica, arial, sans-serif;
-          height:100%;
-        }
-        a {
-          text-decoration:none;
-        }
-        a:hover {
-          text-decoration:underline;
-        }
-        .container {
-          min-height:100%;
-        }
-        #content {
-          padding-bottom:2em;
-        }
-        h1, h3, h4 {
-          font-weight:normal;
-        }
-        h1 {
-          font-size:10em;
-          font-family:georgia, serif;
-        }
-        h3, h4 {
-          font-size: 1.3em;
-          padding-top: .5em;
-        }
-        .content-body {
-          padding-top:7em;
-        }
-        .content-body a {
-          color: #fff;
-        }
-        #footer {
-          font-size:.8em;
-          position:absolute;
-          bottom:0;
-          left:0;
-          width:99%;
-          height:2em;
-          text-align:center;
-        }
-        #footer,
-        #footer a {
-          color:#aaa;
-        }
-        #bad {
-          background-color: #7f0100;
-        }
-        #footer a:hover {
-          color:#fff;
-        }
-        #good {
-          background-color: #2E7F3A;
-        }
-        #good #footer,
-        #good #footer a {
-          color:#BDFFB0;
-        }
-      - if mobile_safari?
-        :plain
-          body {
-            padding-top:3em;
-            padding-left:1em;
-            padding-right:1em;
-          }
-          #footer {
-          position:relative;
-          padding-top:5em;
-          }
   %body{:id => "#{@goodorbad}"}
     .container
       #content 
@@ -171,3 +101,69 @@ __END__
         <a href="http://www.firefox.com">firefox</a>,
       a good web browser.
       
+@@ main
+*
+  :margin 0
+  :padding 0
+body
+  :text-align center
+  :padding-top 8em
+  :color #fff
+  :font-size 80%
+  :background-color #777
+  :font-family helvetica, arial, sans-serif
+  :height 100%
+a
+  :text-decoration none
+  &:hover
+    :text-decoration underline
+.container
+  :min-height 100%
+  #content
+    :padding-bottom 2em
+    h1
+      :font-weight normal
+      :font-size 10em
+      :font-family georgia, serif
+    h3
+      :font-weight normal
+      :font-size 1.3em
+      :padding-top .5em
+
+    h4
+      :font-weight normal
+      :font-size 1.3em
+      :padding-top .5em
+    .content-body
+      :padding-top 7em
+      a
+        :color #fff
+  #footer
+    :font-size .8em
+    :position absolute
+    :bottom 0
+    :left 0
+    :width 99%
+    :height 2em
+    :text-align center
+    :color #aaa
+    a
+      :color #aaa
+      &:hover #fff
+#bad
+  :background-color #7f0100
+#good
+  :background-color #2E7F3A
+  #footer
+    :color #BDFFB0
+    a
+      :color #BDFFB0
+
+@@ mobile_safari
+body
+  :padding-top 3em
+  :padding-left 1em
+  :padding-right 1em
+#footer
+  :position relative
+  :padding-top 5em

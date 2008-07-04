@@ -1,8 +1,15 @@
-goodbrowserbadbrowser is a very simple browser detection script that powers the amazing goodbrowserbadbrowser.com
+goodbrowserbadbrowser is a very simple browser detection script that powers the amazing good browser advocacy site: http://goodbrowserbadbrowser.com
 
-our plan is to one day provide unobtrusive browser detection badges that you can display on your site to encourage upgrades to good browsers.
+our plan is to one day provide unobtrusive browser detection badges that you can display on your site to encourage upgrades to good browsers. rock out.
 
 === installation ===
 
 get sinatra: http://github.com/bmizerany/sinatra/tree/master
 run sinatra on edge as described in that file.
+
+=== thanks ===
+
+microsoft, for their inspiration to advocate good browsers like firefox and safari
+blake mizerany http://github.com/bmizerany, for sinatra. awesome, awesome sinatra.
+dennis hengeveld http://max.hengeveld.com/ for our chats about some browsers being lame
+21st amendment, for their fantastic beer.

@@ -1,37 +1,69 @@
+#use latest version of sinatra
+$:.unshift File.dirname(__FILE__) + '/sinatra/lib'
+
 # goodbrowserbadbrowser.rb
 require 'rubygems'
 require 'sinatra'
-
-Sinatra::Options.set_environment :production
-
-# Browser Checks
-def mobile_safari?
-  request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
+ 
+not_found do
+  headers["Status"] = "301 Moved Permanently"
+  redirect("/")
 end
-def ie?
-  request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"].include?("MSIE")
-end
-def safari?
-  request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"].include?("Safari")
-end
-def firefox?
-  request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"].include?("Firefox")
+ 
+helpers do
+  # Browser Checks
+  def mobile_safari?
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
+  end
+  def ie?
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"].include?("MSIE")
+  end
+  def safari?
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"].include?("Safari")
+  end
+  def firefox?
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"].include?("Firefox")
+  end
+  # good or bad
+  def goodorbad
+    if @goodorbad
+      @goodorbad = @goodorbad
+    elsif ie?
+      @goodorbad = "bad"
+    else
+      @goodorbad = "good"
+    end
+  end
 end
 
 get '/' do
-  if ie?
-    goodorbad = "bad"
-    browser = "Internet Explorer"
-  else
-    goodorbad = "good"
-  end
-  
-  haml <<-haml
+  goodorbad
+  haml :index
+end
+
+get '/bad' do
+  @goodorbad = "bad"
+  haml :index
+end
+
+get '/good' do
+  @goodorbad = "good"
+  haml :index
+end
+
+use_in_file_templates!
+
+__END__
+
+@@ layout
 !!! XML
 !!!
 %html
   %head
-    %title #{goodorbad} browser
+    %title 
+      = @goodorbad
+      browser
+    %link{:rel => "shortcut icon", :href => "favicon_"+"#{@goodorbad}"+".ico"}
     - if mobile_safari?
       %meta{:name => "viewport", :content => "width = device-width, initial-scale = 1.0"}/
     %style{:type => "text/css"}
@@ -115,31 +147,27 @@ get '/' do
           position:relative;
           padding-top:5em;
           }
-  %body{:id => "#{goodorbad}"}
+  %body{:id => "#{@goodorbad}"}
     .container
       #content 
-        %h1 #{goodorbad}
-        .content-body 
-          - if ie?
-            %h3 treat yourself to something good.
-            %h4 download <a href="http://www.apple.com/safari/download/">safari</a> or <a href="http://firefox.com/">firefox</a> today!
-          - else
-            %h3 
-              you're using 
-              - if safari?
-                - if mobile_safari?
-                  mobile safari,
-                - else
-                  <a href="http://www.apple.com/safari/">safari</a>,
-              - if firefox?
-                <a href="http://www.firefox.com">firefox</a>,
-              a good web browser.
+        = yield
       %p#footer <a href="http://goodbrowserbadbrowser.com">good browser, bad browser</a> brought to you by <a href="http://www.seaofclouds.com">seaofclouds</a>, and powered with <a href="http://sinatra.rubyforge.org/">sinatra</a>.
-
-    haml
-end
-
-get 404 do
-  headers["Status"] = "301 Moved Permanently"
-  redirect("/")
-end
+      
+@@ index
+%h1= @goodorbad
+.content-body 
+  - if @goodorbad == "bad"
+    %h3 treat yourself to something good.
+    %h4 download <a href="http://www.apple.com/safari/download/">safari</a> or <a href="http://firefox.com/">firefox</a> today!
+  - else
+    %h3 
+      you're using 
+      - if safari?
+        - if mobile_safari?
+          mobile safari,
+        - else
+          <a href="http://www.apple.com/safari/">safari</a>,
+      - if firefox?
+        <a href="http://www.firefox.com">firefox</a>,
+      a good web browser.
+      

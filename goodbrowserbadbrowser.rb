@@ -28,10 +28,14 @@ helpers do
   def goodorbad
     if @goodorbad
       @goodorbad = @goodorbad
-    elsif ie?
-      @goodorbad = "bad"
-    else
+    elsif mobile_safari?
       @goodorbad = "good"
+    elsif safari?
+      @goodorbad = "good"
+    elsif firefox?
+      @goodorbad = "good"
+    else
+      @goodorbad = "bad"
     end
   end
 end

@@ -81,7 +81,7 @@ __END__
     .container
       #content 
         = yield
-      %p#footer <a href="http://goodbrowserbadbrowser.com">good browser, bad browser</a> brought to you by <a href="http://www.seaofclouds.com">seaofclouds</a>, and powered with <a href="http://sinatra.rubyforge.org/">sinatra</a>
+      %p#footer <a href="https://github.com/seaofclouds/good-browser-bad-browser">good browser, bad browser</a> brought to you by <a href="http://www.seaofclouds.com">seaofclouds</a>, and powered with <a href="http://sinatra.rubyforge.org/">sinatra</a>
       
 @@ index
 %h1= @goodorbad

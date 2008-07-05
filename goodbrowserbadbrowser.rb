@@ -113,10 +113,6 @@ body
   :background-color #777
   :font-family helvetica, arial, sans-serif
   :height 100%
-a
-  :text-decoration none
-  &:hover
-    :text-decoration underline
 .container
   :min-height 100%
   #content

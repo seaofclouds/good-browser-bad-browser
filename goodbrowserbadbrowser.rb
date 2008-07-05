@@ -129,7 +129,6 @@ body
       :font-weight normal
       :font-size 1.3em
       :padding-top .5em
-
     h4
       :font-weight normal
       :font-size 1.3em

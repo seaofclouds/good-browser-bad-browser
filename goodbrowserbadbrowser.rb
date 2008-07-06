@@ -104,6 +104,8 @@ __END__
       a good web browser.
       
 @@ main
+!green = #2E7F3A
+!red = #7f0100
 *
   :margin 0
   :padding 0
@@ -148,13 +150,17 @@ body
       :color #aaa
       &:hover #fff
 #bad
-  :background-color #7f0100
-#good
-  :background-color #2E7F3A
+  :background-color = !red
   #footer
-    :color #BDFFB0
+    :color = !red + #777
     a
-      :color #BDFFB0
+      :color = !red + #777
+#good
+  :background-color = !green
+  #footer
+    :color = !green + #777
+    a
+      :color = !green + #777
 
 @@ mobile_safari
 body

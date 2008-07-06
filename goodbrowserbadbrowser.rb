@@ -4,12 +4,12 @@ $:.unshift File.dirname(__FILE__) + '/sinatra/lib'
 # goodbrowserbadbrowser.rb
 require 'rubygems'
 require 'sinatra'
- 
+
 not_found do
   headers["Status"] = "301 Moved Permanently"
   redirect("/")
 end
- 
+
 helpers do
   # Browser Checks
   def mobile_safari?
@@ -73,9 +73,7 @@ __END__
 !!!
 %html
   %head
-    %title 
-      = @goodorbad
-      browser
+    %title= @goodorbad + " browser"
     %link{:rel => "shortcut icon", :href => "/favicon_"+"#{@goodorbad}"+".ico"}
     %link{:href=>"/main.css", :media=>"all", :rel=>"stylesheet", :type=>"text/css"}/
     - if mobile_safari?

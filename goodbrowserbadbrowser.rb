@@ -92,7 +92,7 @@ __END__
 .content-body 
   - if @goodorbad == "bad"
     %h3 treat yourself to something good.
-    %h4 download <a href="http://www.apple.com/safari/download/">safari</a> or <a href="http://firefox.com/">firefox</a> today!
+    %h4 upgrade to <a href="http://www.apple.com/safari/download/">safari</a> or <a href="http://firefox.com/">firefox</a> today!
   - else
     %h3 
       you're using 

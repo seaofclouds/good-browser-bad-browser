@@ -107,11 +107,12 @@ __END__
       - if firefox?
         <a href="http://www.firefox.com">firefox</a>,
       a good web browser.
-.content-footer
-  .badge
-    %p <script language="javascript" src="/widget.js" type="text/javascript"></script><noscript><a href="http://goodbrowserbadbrowser.com/"><img alt="take the good browser bad browser challenge" src="http://goodbrowserbadbrowser.com/badge-goodbad.gif" /></noscript> show the world you care about web standards and put our challenge badge on your site
-    %p.help copy the code and paste into your site's template
-    <textarea rows="5">&lt;script language=&quot;javascript&quot; src=&quot;http://goodbrowserbadbrowser.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://goodbrowserbadbrowser.com/&quot;&gt;&lt;img alt=&quot;take the good browser bad browser challenge&quot; src=&quot;http://goodbrowserbadbrowser.com/badge-goodbad.gif&quot; /&gt;&lt;/noscript&gt;</textarea>
+- unless mobile_safari?
+  .content-footer
+    .badge
+      %p <script language="javascript" src="/widget.js" type="text/javascript"></script><noscript><a href="http://goodbrowserbadbrowser.com/"><img alt="take the good browser bad browser challenge" src="http://goodbrowserbadbrowser.com/badge-goodbad.gif" /></noscript> show the world you care about web standards and put our challenge badge on your site
+      %p.help copy the code and paste into your site's template
+      <textarea rows="5">&lt;script language=&quot;javascript&quot; src=&quot;http://goodbrowserbadbrowser.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://goodbrowserbadbrowser.com/&quot;&gt;&lt;img alt=&quot;take the good browser bad browser challenge&quot; src=&quot;http://goodbrowserbadbrowser.com/badge-goodbad.gif&quot; /&gt;&lt;/noscript&gt;</textarea>
 @@ main
 !green = #2E7F3A
 !red = #7f0100
@@ -202,6 +203,11 @@ body
   :padding-top 3em
   :padding-left 1em
   :padding-right 1em
-#footer
-  :position relative
-  :padding-top 5em
+.container  
+  #content
+    h1
+      :font-size 10em
+    h3
+      :font-size 190%
+  #footer
+    :font-size 100%

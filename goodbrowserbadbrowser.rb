@@ -63,7 +63,9 @@ get '/mobile_safari.css' do
   content_type 'text/css', :charset => 'utf-8'
   sass :mobile_safari
 end
- 
+get '/widget.js' do
+
+end
 use_in_file_templates!
 
 __END__
@@ -102,7 +104,11 @@ __END__
       - if firefox?
         <a href="http://www.firefox.com">firefox</a>,
       a good web browser.
-      
+.content-footer
+  .badge
+    %p show the world you care about web standards and put our challenge badge on your site
+    %p <script language="javascript" src="/widget.js" type="text/javascript"></script>
+    <textarea rows="3">&lt;script language=&quot;javascript&quot; src=&quot;http://goodbrowserbadbrowser.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</textarea>
 @@ main
 !green = #2E7F3A
 !red = #7f0100
@@ -114,7 +120,6 @@ body
   :padding-top 8em
   :color #fff
   :font-size 80%
-  :background-color #777
   :font-family helvetica, arial, sans-serif
   :height 100%
 .container
@@ -134,9 +139,24 @@ body
       :font-size 1.3em
       :padding-top .5em
     .content-body
-      :padding-top 7em
+      :padding-top 5em
+      :padding-bottom 3em
       a
         :color #fff
+    .badge
+      :width 21em
+      :padding 1em
+      :margin 0 auto
+      :-webkit-border-radius 1em
+      :-moz-border-radius 1em
+      :background-color #eee
+      textarea
+        :width 95%
+        :border 1px solid #999
+        :overflow hidden
+        :padding .4em
+      p
+        :padding-bottom 1em
   #footer
     :font-size .8em
     :position absolute
@@ -151,12 +171,20 @@ body
       &:hover #fff
 #bad
   :background-color = !red
+  .badge
+    :color = !red - #111
+    textarea
+      :color = !red
   #footer
     :color = !red + #777
     a
       :color = !red + #777
 #good
   :background-color = !green
+  .badge
+    :color = !green - #111
+    textarea
+      :color = !green
   #footer
     :color = !green + #777
     a

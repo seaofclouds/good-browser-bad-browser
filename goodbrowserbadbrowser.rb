@@ -91,7 +91,7 @@ __END__
       %p#footer 
         <script src="http://static.getclicky.com/38270.js" type="text/javascript"></script>
         <noscript><img alt="Clicky" src="http://in.getclicky.com/38270-db5.gif" /></noscript>
-        <a href="https://github.com/seaofclouds/good-browser-bad-browser">good browser, bad browser</a> brought to you by <a href="http://www.seaofclouds.com">seaofclouds</a>, and powered with <a href="http://sinatra.rubyforge.org/">sinatra</a>
+        something nifty from <a href="http://www.seaofclouds.com">seaofclouds</a>&trade; | <a href="http://github.com/seaofclouds/good-browser-bad-browser">contribute</a>
       
 @@ index
 %h1= @goodorbad
@@ -114,13 +114,13 @@ __END__
   .badge
     %p 
       - if @goodorbad == "bad"
-        <a href="/bad" class="badbrowser" id="goodbrowserbadbrowser"><img src="/badge-bad.gif" alt="take the good browser bad browser challenge" border="0" /></a>
-        even though you're using a bad browser, you can still show off your flair for web standards. go ahead and put our challenge badge on your site
+        <a href="/bad" class="badbrowser" id="goodbrowserbadbrowser"><img src="/badge-bad.gif" alt="take the browser challenge" border="0" /></a>
+        even though you're using a bad browser, you can still show off your flair for web standards. go ahead and put our challenge badge on your site.
       - else
-        <a href="/good" class="goodbrowser" id="goodbrowserbadbrowser"><img src="/badge-good.png" alt="take the good browser bad browser challenge" border="0" /></a>
-        show the world you care about web standards and put our challenge badge on your site
-    %p.help copy the code and paste into your site's template
-    <textarea rows="7">&lt;script language=&quot;javascript&quot; src=&quot;http://goodbrowserbadbrowser.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://goodbrowserbadbrowser.com/&quot;&gt;&lt;img alt=&quot;take the good browser bad browser challenge&quot; src=&quot;http://goodbrowserbadbrowser.com/badge-goodbad.gif&quot; /&gt;&lt;/noscript&gt;</textarea>
+        <a href="/good" class="goodbrowser" id="goodbrowserbadbrowser"><img src="/badge-good.png" alt="take the browser challenge" border="0" /></a>
+        show the world you care about web standards and put our challenge badge on your site.
+    %p.help copy, then paste the code into your site's template
+    <textarea rows="7">&lt;script language=&quot;javascript&quot; src=&quot;http://goodbrowserbadbrowser.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://goodbrowserbadbrowser.com/&quot;&gt;&lt;img alt=&quot;take the browser challenge&quot; src=&quot;http://goodbrowserbadbrowser.com/badge-goodbad.gif&quot; /&gt;&lt;/noscript&gt;</textarea>
 
 @@ main
 !green = #2E7F3A
@@ -159,6 +159,7 @@ body
       :-webkit-border-radius 1em
       :-moz-border-radius 1em
       :background-color #eee
+      :text-align left
       #goodbrowserbadbrowser
         :float right
         :margin-left 1em
@@ -171,7 +172,6 @@ body
         :font-size 85%
       p
         :padding-bottom 1em
-        :text-align left
         :font-weight bold
       p.help
         :font-size 85%
@@ -180,19 +180,23 @@ body
         :color #777
         :font-weight normal
   #footer
-    :font-size .8em
+    :font-size .85em
     :text-align center
     :color #aaa
     :padding 1em
+    :font-family verdana, sans-serif
     a
       :color #aaa
       &:hover #fff
 #bad
   :background-color = !red
-  .badge
-    :color = !red - #111
-    textarea
-      :color = !red
+  .container
+    #content
+      .badge
+        :color = !red - #111
+        :width 33em
+        textarea
+          :color = !red
   #footer
     :color = !red + #777
     a

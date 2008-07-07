@@ -153,7 +153,7 @@ body
       a
         :color #fff
     .badge
-      :width 31em
+      :width 32em
       :padding 1em
       :margin 0 auto
       :-webkit-border-radius 1em
@@ -233,5 +233,6 @@ body
       .badge
         :width 35em
         textarea
-          :height 11em
+          :height 10em
+          :width 100%
           :overflow hidden

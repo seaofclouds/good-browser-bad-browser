@@ -85,7 +85,10 @@ __END__
     .container
       #content 
         = yield
-      %p#footer <a href="https://github.com/seaofclouds/good-browser-bad-browser">good browser, bad browser</a> brought to you by <a href="http://www.seaofclouds.com">seaofclouds</a>, and powered with <a href="http://sinatra.rubyforge.org/">sinatra</a>
+      %p#footer 
+        <script src="http://static.getclicky.com/38270.js" type="text/javascript"></script>
+        <noscript><img alt="Clicky" src="http://in.getclicky.com/38270-db5.gif" /></noscript>
+        <a href="https://github.com/seaofclouds/good-browser-bad-browser">good browser, bad browser</a> brought to you by <a href="http://www.seaofclouds.com">seaofclouds</a>, and powered with <a href="http://sinatra.rubyforge.org/">sinatra</a>
       
 @@ index
 %h1= @goodorbad
@@ -106,9 +109,9 @@ __END__
       a good web browser.
 .content-footer
   .badge
-    %p show the world you care about web standards and put our challenge badge on your site
-    %p <script language="javascript" src="/widget.js" type="text/javascript"></script>
-    <textarea rows="3">&lt;script language=&quot;javascript&quot; src=&quot;http://goodbrowserbadbrowser.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</textarea>
+    %p <script language="javascript" src="/widget.js" type="text/javascript"></script><noscript><a href="http://goodbrowserbadbrowser.com/"><img alt="take the good browser bad browser challenge" src="http://goodbrowserbadbrowser.com/badge-goodbad.gif" /></noscript> show the world you care about web standards and put our challenge badge on your site
+    %p.help copy the code and paste into your site's template
+    <textarea rows="5">&lt;script language=&quot;javascript&quot; src=&quot;http://goodbrowserbadbrowser.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://goodbrowserbadbrowser.com/&quot;&gt;&lt;img alt=&quot;take the good browser bad browser challenge&quot; src=&quot;http://goodbrowserbadbrowser.com/badge-goodbad.gif&quot; /&gt;&lt;/noscript&gt;</textarea>
 @@ main
 !green = #2E7F3A
 !red = #7f0100
@@ -117,7 +120,7 @@ __END__
   :padding 0
 body
   :text-align center
-  :padding-top 8em
+  :padding-top 5em
   :color #fff
   :font-size 80%
   :font-family helvetica, arial, sans-serif
@@ -128,44 +131,48 @@ body
     :padding-bottom 2em
     h1
       :font-weight normal
-      :font-size 10em
+      :font-size 15em
       :font-family georgia, serif
-    h3
+    h3, h4
       :font-weight normal
-      :font-size 1.3em
-      :padding-top .5em
-    h4
-      :font-weight normal
-      :font-size 1.3em
+      :font-size 1.74em
       :padding-top .5em
     .content-body
-      :padding-top 5em
-      :padding-bottom 3em
+      :padding-top 3em
+      :padding-bottom 8em
       a
         :color #fff
     .badge
-      :width 21em
+      :width 31em
       :padding 1em
       :margin 0 auto
       :-webkit-border-radius 1em
       :-moz-border-radius 1em
       :background-color #eee
+      #goodbrowserbadbrowser
+        :float right
+        :margin-left 1em
       textarea
-        :width 95%
+        :width 97%
         :border 1px solid #999
         :overflow hidden
         :padding .4em
+        :word-break break-all
       p
         :padding-bottom 1em
+        :text-align left
+        :font-weight bold
+      p.help
+        :font-size 85%
+        :font-family verdana, sans-serif
+        :padding-bottom .3em
+        :color #777
+        :font-weight normal
   #footer
     :font-size .8em
-    :position absolute
-    :bottom 0
-    :left 0
-    :width 99%
-    :height 2em
     :text-align center
     :color #aaa
+    :padding 1em
     a
       :color #aaa
       &:hover #fff

@@ -63,8 +63,9 @@ get '/mobile_safari.css' do
   content_type 'text/css', :charset => 'utf-8'
   sass :mobile_safari
 end
-get '/widget.js' do
-
+get '/ie.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass :ie
 end
 use_in_file_templates!
 
@@ -78,6 +79,8 @@ __END__
     %title= @goodorbad + " browser"
     %link{:rel => "shortcut icon", :href => "/favicon_"+"#{@goodorbad}"+".ico"}
     %link{:href=>"/main.css", :media=>"all", :rel=>"stylesheet", :type=>"text/css"}/
+    - if ie?
+      %link{:href=>"/ie.css", :media=>"all", :rel=>"stylesheet", :type=>"text/css"}/
     - if mobile_safari?
       %link{:href=>"/mobile_safari.css", :media=>"all", :rel=>"stylesheet", :type=>"text/css"}/
       %meta{:name => "viewport", :content => "width = device-width, initial-scale = 1.0"}/
@@ -108,11 +111,17 @@ __END__
         <a href="http://www.firefox.com">firefox</a>,
       a good web browser.
 - unless mobile_safari?
-  .content-footer
-    .badge
-      %p <script language="javascript" src="/widget.js" type="text/javascript"></script><noscript><a href="http://goodbrowserbadbrowser.com/"><img alt="take the good browser bad browser challenge" src="http://goodbrowserbadbrowser.com/badge-goodbad.gif" /></noscript> show the world you care about web standards and put our challenge badge on your site
-      %p.help copy the code and paste into your site's template
-      <textarea rows="5">&lt;script language=&quot;javascript&quot; src=&quot;http://goodbrowserbadbrowser.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://goodbrowserbadbrowser.com/&quot;&gt;&lt;img alt=&quot;take the good browser bad browser challenge&quot; src=&quot;http://goodbrowserbadbrowser.com/badge-goodbad.gif&quot; /&gt;&lt;/noscript&gt;</textarea>
+  .badge
+    %p 
+      - if @goodorbad == "bad"
+        <a href="/bad" class="badbrowser" id="goodbrowserbadbrowser"><img src="/badge-bad.gif" alt="take the good browser bad browser challenge" border="0" /></a>
+        even though you're using a bad browser, you can still show off your flair for web standards. go ahead and put our challenge badge on your site
+      - else
+        <a href="/good" class="goodbrowser" id="goodbrowserbadbrowser"><img src="/badge-good.png" alt="take the good browser bad browser challenge" border="0" /></a>
+        show the world you care about web standards and put our challenge badge on your site
+    %p.help copy the code and paste into your site's template
+    <textarea rows="7">&lt;script language=&quot;javascript&quot; src=&quot;http://goodbrowserbadbrowser.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://goodbrowserbadbrowser.com/&quot;&gt;&lt;img alt=&quot;take the good browser bad browser challenge&quot; src=&quot;http://goodbrowserbadbrowser.com/badge-goodbad.gif&quot; /&gt;&lt;/noscript&gt;</textarea>
+
 @@ main
 !green = #2E7F3A
 !red = #7f0100
@@ -156,9 +165,10 @@ body
       textarea
         :width 97%
         :border 1px solid #999
-        :overflow hidden
         :padding .4em
-        :word-break break-all
+        :word-break break-word
+        :font-family monaco, monospace
+        :font-size 85%
       p
         :padding-bottom 1em
         :text-align left
@@ -211,3 +221,13 @@ body
       :font-size 190%
   #footer
     :font-size 100%
+
+@@ ie
+body
+  .container
+    #content
+      .badge
+        :width 35em
+        textarea
+          :height 11em
+          :overflow hidden

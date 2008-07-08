@@ -114,13 +114,13 @@ __END__
   .badge
     %p 
       - if @goodorbad == "bad"
-        <a href="/bad" class="badbrowser" id="goodbrowserbadbrowser"><img src="/badge-bad.gif" alt="take the browser challenge" border="0" /></a>
+        <a href="/bad" class="badbrowser" id="browserchallenge"><img src="/badge-bad.gif" alt="take the browser challenge" border="0" /></a>
         even though you're using a bad browser, you can still show off your flair for web standards. go ahead and put our challenge badge on your site.
       - else
-        <a href="/good" class="goodbrowser" id="goodbrowserbadbrowser"><img src="/badge-good.png" alt="take the browser challenge" border="0" /></a>
+        <a href="/good" class="goodbrowser" id="browserchallenge"><img src="/badge-good.png" alt="take the browser challenge" border="0" /></a>
         show the world you care about web standards and put our challenge badge on your site.
     %p.help copy, then paste the code into your site's template
-    <textarea rows="7">&lt;script language=&quot;javascript&quot; src=&quot;http://goodbrowserbadbrowser.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://goodbrowserbadbrowser.com/&quot;&gt;&lt;img alt=&quot;take the browser challenge&quot; src=&quot;http://goodbrowserbadbrowser.com/badge-goodbad.gif&quot; /&gt;&lt;/noscript&gt;</textarea>
+    <textarea rows="7">&lt;script language=&quot;javascript&quot; src=&quot;http://browserchallenge.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/&quot;&gt;&lt;img alt=&quot;take the browser challenge&quot; src=&quot;http://browserchallenge.com/badge-goodbad.gif&quot; /&gt;&lt;/a&gt;&lt;/noscript&gt;</textarea>
 
 @@ main
 !green = #2E7F3A
@@ -160,7 +160,7 @@ body
       :-moz-border-radius 1em
       :background-color #eee
       :text-align left
-      #goodbrowserbadbrowser
+      #browserchallenge
         :float right
         :margin-left 1em
       textarea
@@ -195,6 +195,8 @@ body
       .badge
         :color = !red - #111
         :width 33em
+        a
+          :color = !red
         textarea
           :color = !red
   #footer
@@ -205,6 +207,8 @@ body
   :background-color = !green
   .badge
     :color = !green - #111
+    a
+      :color = !green
     textarea
       :color = !green
   #footer

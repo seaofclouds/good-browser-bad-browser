@@ -64,6 +64,7 @@ get '/mobile_safari.css' do
   sass :mobile_safari
 end
 get '/ie.css' do
+  content_type 'text/css', :charset => 'utf-8'
   sass :ie
 end
 use_in_file_templates!
@@ -110,22 +111,22 @@ __END__
         <a href="http://www.firefox.com">firefox</a>,
       a good web browser.
 - unless mobile_safari?
-  .badge
+  .content-footer
     %h1 
       - if @goodorbad == "bad"
         even though you're using a bad browser, you can still show off your flair for web standards. go ahead and put the browser challenge badge on your site.
       - else
         show the world you care about web standards and put the browser challenge badge on your site.
     .imagebadge
-      %p.widget 
+      %p.badge 
         - if @goodorbad == "bad"
           <a href="/bad" class="badbrowser" id="browserchallenge"><img src="/badge-bad.gif" alt="take the browser challenge" border="0" /></a>
         - else
           <a href="/good" class="goodbrowser" id="browserchallenge"><img src="/badge-good.png" alt="take the browser challenge" border="0" /></a>
       %p.help copy, then paste the code for our easy does it, stylin' <strong>image badge</strong> into your site's template.
-      <textarea>&lt;script language=&quot;javascript&quot; src=&quot;http://browserchallenge.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/&quot;&gt;&lt;img alt=&quot;take the browser challenge&quot; src=&quot;http://browserchallenge.com/badge-goodbad.gif&quot; /&gt;&lt;/a&gt;&lt;/noscript&gt;</textarea>
+      %textarea &lt;script language=&quot;javascript&quot; src=&quot;http://browserchallenge.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/&quot;&gt;&lt;img alt=&quot;take the browser challenge&quot; src=&quot;http://browserchallenge.com/badge-goodbad.gif&quot; /&gt;&lt;/a&gt;&lt;/noscript&gt;
     .textbadge
-      %p.widget 
+      %p.badge 
         - if @goodorbad == "bad"
           <a href='/bad' class='badbrowser' id='browserchallengetext'>bad browser</a>
         - else
@@ -164,7 +165,7 @@ body
       :padding-bottom 8em
       a
         :color #fff
-    .badge
+    .content-footer
       :width 39em
       :padding 1em
       :margin 0 auto
@@ -179,7 +180,7 @@ body
       .imagebadge, .textbadge
         :width 18.3em
         :float left
-        .widget
+        .badge
           :text-align center
           :height 2.5em
         textarea
@@ -226,7 +227,7 @@ body
   :background-color = !red
   .container
     #content
-      .badge
+      .content-footer
         :color = !red - #111
         a
           :color = !red
@@ -238,7 +239,7 @@ body
       :color = !red + #777
 #good
   :background-color = !green
-  .badge
+  .content-footer
     :color = !green
     a
       :color = !green
@@ -267,12 +268,11 @@ body
 body#good, body#bad
   .container
     #content
-      .badge
+      .content-footer
         :width 42em
         .imagebadge, .textbadge
           :width 20em
           p
             :height 4em
-          
         .imagebadge
           :padding-right .3em

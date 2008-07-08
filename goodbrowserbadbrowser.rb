@@ -64,7 +64,6 @@ get '/mobile_safari.css' do
   sass :mobile_safari
 end
 get '/ie.css' do
-  content_type 'text/css', :charset => 'utf-8'
   sass :ie
 end
 use_in_file_templates!
@@ -123,7 +122,7 @@ __END__
           <a href="/bad" class="badbrowser" id="browserchallenge"><img src="/badge-bad.gif" alt="take the browser challenge" border="0" /></a>
         - else
           <a href="/good" class="goodbrowser" id="browserchallenge"><img src="/badge-good.png" alt="take the browser challenge" border="0" /></a>
-      %p.help copy, then paste the code for our <strong>image badge</strong> into your site's template
+      %p.help copy, then paste the code for our easy does it, stylin' <strong>image badge</strong> into your site's template.
       <textarea>&lt;script language=&quot;javascript&quot; src=&quot;http://browserchallenge.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/&quot;&gt;&lt;img alt=&quot;take the browser challenge&quot; src=&quot;http://browserchallenge.com/badge-goodbad.gif&quot; /&gt;&lt;/a&gt;&lt;/noscript&gt;</textarea>
     .textbadge
       %p.widget 
@@ -149,9 +148,7 @@ body
   :color #fff
   :font-size 80%
   :font-family helvetica, arial, sans-serif
-  :height 100%
 .container
-  :min-height 100%
   #content
     :padding-bottom 2em
     h2
@@ -168,7 +165,7 @@ body
       a
         :color #fff
     .badge
-      :width 32em
+      :width 39em
       :padding 1em
       :margin 0 auto
       :margin-bottom 1em
@@ -180,18 +177,19 @@ body
         :font-size 130%
         :padding-bottom 1em
       .imagebadge, .textbadge
-        :width 15em
+        :width 18.3em
         :float left
         .widget
           :text-align center
           :height 2.5em
         textarea
-          :width 97%
+          :width 100%
           :border 1px solid #ccc
           :word-break break-word
           :font-family courier, monospace
           :height 10em
           :line-height 1.5em
+          :font-size 85%
         p
           :padding-bottom 1em
           :font-weight bold
@@ -202,19 +200,16 @@ body
           :margin-top 1em
           :padding-bottom .5em
       .imagebadge
-        :width 15em
-        :margin-right .95em
-        :padding-right .95em
+        :margin-right 1em
+        :padding-right 1em
         :border-right 1px solid #ccc
       .clear
         :clear both
-      #browserchallenge
-        :margin 0 auto
       #browserchallengetext
         :font-family georgia, serif
         :text-decoration none
         :font-weight normal
-        :font-size 160%
+        :font-size 180%
         :line-height 1.3em
         &:hover
           :text-decoration underline
@@ -233,7 +228,6 @@ body
     #content
       .badge
         :color = !red - #111
-        :width 33em
         a
           :color = !red
         textarea
@@ -270,12 +264,15 @@ body
     :font-size 100%
 
 @@ ie
-body
+body#good, body#bad
   .container
     #content
       .badge
-        :width 35em
-        textarea
-          :height 10em
-          :width 100%
-          :overflow hidden
+        :width 42em
+        .imagebadge, .textbadge
+          :width 20em
+          p
+            :height 4em
+          
+        .imagebadge
+          :padding-right .3em

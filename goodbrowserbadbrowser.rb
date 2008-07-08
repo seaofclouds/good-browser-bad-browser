@@ -127,9 +127,9 @@ __END__
     .textbadge
       %p.widget 
         - if @goodorbad == "bad"
-          <a href='http://browserchallenge.com/good' class='baddbrowser' id='browserchallengetext'>bad browser</a>
+          <a href='/bad' class='badbrowser' id='browserchallengetext'>bad browser</a>
         - else
-          <a href='http://browserchallenge.com/good' class='goodbrowser' id='browserchallengetext'>good browser</a>
+          <a href='/good' class='goodbrowser' id='browserchallengetext'>good browser</a>
       %p.help
         copy, then paste the code for our glorious, css styleable <strong>text badge</strong> into your site's template.
       %textarea

@@ -187,7 +187,7 @@ body
           :width 100%
           :border 1px solid #ccc
           :word-break break-word
-          :font-family courier, monospace
+          :font-family monaco, monospace
           :height 10em
           :line-height 1.5em
           :font-size 85%

@@ -94,7 +94,7 @@ __END__
         something nifty from <a href="http://www.seaofclouds.com">seaofclouds</a>&trade; | <a href="http://github.com/seaofclouds/good-browser-bad-browser">contribute</a>
       
 @@ index
-%h1= @goodorbad
+%h2= @goodorbad
 .content-body 
   - if @goodorbad == "bad"
     %h3 treat yourself to something good.
@@ -112,15 +112,30 @@ __END__
       a good web browser.
 - unless mobile_safari?
   .badge
-    %p 
+    %h1 
       - if @goodorbad == "bad"
-        <a href="/bad" class="badbrowser" id="browserchallenge"><img src="/badge-bad.gif" alt="take the browser challenge" border="0" /></a>
-        even though you're using a bad browser, you can still show off your flair for web standards. go ahead and put our challenge badge on your site.
+        even though you're using a bad browser, you can still show off your flair for web standards. go ahead and put the browser challenge badge on your site.
       - else
-        <a href="/good" class="goodbrowser" id="browserchallenge"><img src="/badge-good.png" alt="take the browser challenge" border="0" /></a>
-        show the world you care about web standards and put our challenge badge on your site.
-    %p.help copy, then paste the code into your site's template
-    <textarea rows="7">&lt;script language=&quot;javascript&quot; src=&quot;http://browserchallenge.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/&quot;&gt;&lt;img alt=&quot;take the browser challenge&quot; src=&quot;http://browserchallenge.com/badge-goodbad.gif&quot; /&gt;&lt;/a&gt;&lt;/noscript&gt;</textarea>
+        show the world you care about web standards and put the browser challenge badge on your site.
+    .imagebadge
+      %p.widget 
+        - if @goodorbad == "bad"
+          <a href="/bad" class="badbrowser" id="browserchallenge"><img src="/badge-bad.gif" alt="take the browser challenge" border="0" /></a>
+        - else
+          <a href="/good" class="goodbrowser" id="browserchallenge"><img src="/badge-good.png" alt="take the browser challenge" border="0" /></a>
+      %p.help copy, then paste the code for our <strong>image badge</strong> into your site's template
+      <textarea>&lt;script language=&quot;javascript&quot; src=&quot;http://browserchallenge.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/&quot;&gt;&lt;img alt=&quot;take the browser challenge&quot; src=&quot;http://browserchallenge.com/badge-goodbad.gif&quot; /&gt;&lt;/a&gt;&lt;/noscript&gt;</textarea>
+    .textbadge
+      %p.widget 
+        - if @goodorbad == "bad"
+          <a href='http://browserchallenge.com/good' class='baddbrowser' id='browserchallengetext'>bad browser</a>
+        - else
+          <a href='http://browserchallenge.com/good' class='goodbrowser' id='browserchallengetext'>good browser</a>
+      %p.help
+        copy, then paste the code for our glorious, css styleable <strong>text badge</strong> into your site's template.
+      %textarea
+        &lt;style type=&quot;text/css&quot;&gt; #browserchallengetext {font-family: georgia, serif; text-decoration: none;font-weight: normal;font-size: 160%; line-height: 1.3em; } #browserchallengetext:hover {text-decoration: underline; } a.badbrowser {color: #7f0100;} a.goodbrowser {color: #2e7f3a;} &lt;/style&gt; &lt;script language=&quot;javascript&quot; src=&quot;http://browserchallenge.com/widget-text.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/&quot;&gt;take the browser challenge&lt;/a&gt;&lt;/noscript&gt;
+    .clear
 
 @@ main
 !green = #2E7F3A
@@ -139,7 +154,7 @@ body
   :min-height 100%
   #content
     :padding-bottom 2em
-    h1
+    h2
       :font-weight normal
       :font-size 15em
       :font-family georgia, serif
@@ -156,29 +171,53 @@ body
       :width 32em
       :padding 1em
       :margin 0 auto
+      :margin-bottom 1em
       :-webkit-border-radius 1em
       :-moz-border-radius 1em
       :background-color #eee
       :text-align left
-      #browserchallenge
-        :float right
-        :margin-left 1em
-      textarea
-        :width 97%
-        :border 1px solid #999
-        :padding .4em
-        :word-break break-word
-        :font-family monaco, monospace
-        :font-size 85%
-      p
+      h1
+        :font-size 130%
         :padding-bottom 1em
-        :font-weight bold
-      p.help
-        :font-size 85%
-        :font-family verdana, sans-serif
-        :padding-bottom .3em
-        :color #777
+      .imagebadge, .textbadge
+        :width 15em
+        :float left
+        .widget
+          :text-align center
+          :height 2.5em
+        textarea
+          :width 97%
+          :border 1px solid #ccc
+          :word-break break-word
+          :font-family courier, monospace
+          :height 10em
+          :line-height 1.5em
+        p
+          :padding-bottom 1em
+          :font-weight bold
+        p.help
+          :padding-bottom .3em
+          :font-weight normal
+        p.mt10
+          :margin-top 1em
+          :padding-bottom .5em
+      .imagebadge
+        :width 15em
+        :margin-right .95em
+        :padding-right .95em
+        :border-right 1px solid #ccc
+      .clear
+        :clear both
+      #browserchallenge
+        :margin 0 auto
+      #browserchallengetext
+        :font-family georgia, serif
+        :text-decoration none
         :font-weight normal
+        :font-size 160%
+        :line-height 1.3em
+        &:hover
+          :text-decoration underline
   #footer
     :font-size .85em
     :text-align center
@@ -206,7 +245,7 @@ body
 #good
   :background-color = !green
   .badge
-    :color = !green - #111
+    :color = !green
     a
       :color = !green
     textarea

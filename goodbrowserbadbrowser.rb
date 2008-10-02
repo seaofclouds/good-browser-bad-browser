@@ -55,6 +55,10 @@ get '/good' do
   haml :index
 end
 
+get '/:lang' do
+  redirect "http://translate.google.com/translate_c?hl=en&sl=en&tl="+params[:lang]+"&u=http://browserchallenge.com/"
+end
+
 get '/main.css' do
   content_type 'text/css', :charset => 'utf-8'
   sass :main
@@ -88,11 +92,22 @@ __END__
     .container
       #content 
         = yield
-      %p#footer 
+      #footer 
         <script src="http://static.getclicky.com/38270.js" type="text/javascript"></script>
         <noscript><img alt="Clicky" src="http://in.getclicky.com/38270-db5.gif" /></noscript>
-        something nifty from <a href="http://www.seaofclouds.com">seaofclouds</a>&trade; | <a href="http://github.com/seaofclouds/good-browser-bad-browser">contribute</a>
-      
+        %p.copyright
+          something nifty from <a href="http://www.seaofclouds.com">seaofclouds</a>&trade; | 
+          %a{:href=>"http://github.com/seaofclouds/good-browser-bad-browser"} contribute
+        %p.translate
+          Translate &raquo;
+          %a{:href=>"/es"} Spanish
+          %span.separator=", "
+          %a{:href=>"/fr"} French
+          %span.separator=", "
+          %a{:href=>"/de"} German
+          %span.separator=", "
+          %a{:href=>"/zh-CN"} Chinese
+        
 @@ index
 %h2= @goodorbad
 .content-body 
@@ -138,6 +153,14 @@ __END__
     .clear
 
 @@ main
+=clearfix
+  &:after
+    :content "."
+    :display block
+    :clear both
+    :visibility hidden
+    :line-height 0
+    :height 0
 !green = #2E7F3A
 !red = #7f0100
 *
@@ -145,12 +168,14 @@ __END__
   :padding 0
 body
   :text-align center
-  :padding-top 5em
   :color #fff
   :font-size 80%
   :font-family helvetica, arial, sans-serif
+  a
+    :color #fff
 .container
   #content
+    :padding-top 4em
     :padding-bottom 2em
     h2
       :font-weight normal
@@ -216,13 +241,20 @@ body
           :text-decoration underline
   #footer
     :font-size .85em
-    :text-align center
     :color #aaa
     :padding 1em
     :font-family verdana, sans-serif
     a
       :color #aaa
       &:hover #fff
+    :width 60em
+    :margin 0 auto
+    p.copyright
+      :float left
+    p.translate
+      :float right
+      :text-align right
+      +clearfix
 #bad
   :background-color = !red
   .container

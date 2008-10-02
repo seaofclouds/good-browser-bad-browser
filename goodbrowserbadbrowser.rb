@@ -55,11 +55,6 @@ get '/good' do
   haml :index
 end
 
-get '/es' do
-  goodorbad
-  haml :index
-end
-
 get '/:lang' do
   redirect "http://translate.google.com/translate_c?hl=en&sl=en&tl="+params[:lang]+"&u=http://browserchallenge.com/"
 end

@@ -1,5 +1,5 @@
 #use latest version of sinatra
-$:.unshift File.dirname(__FILE__) + '/sinatra/lib'
+$LOAD_PATH.unshift(File.dirname(__FILE__) + '/vendor/sinatra/lib')
 
 # goodbrowserbadbrowser.rb
 require 'rubygems'

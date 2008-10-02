@@ -10,9 +10,12 @@ bring your code slinging skills over to: http://github.com/seaofclouds/good-brow
 
 === installation ===
 
-get sinatra: http://github.com/bmizerany/sinatra/tree/master
-run sinatra on edge as described in that file.
-rock out.
+git clone git://github.com/seaofclouds/good-browser-bad-browser.git 
+
+sinatra is now included in the vendor directory, so to keep it up to date, you can do:
+
+git submodule init && git submodule update
+
 
 === thanks ===
 

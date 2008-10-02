@@ -55,6 +55,11 @@ get '/good' do
   haml :index
 end
 
+get '/es' do
+  goodorbad
+  haml :index
+end
+
 get '/:lang' do
   redirect "http://translate.google.com/translate_c?hl=en&sl=en&tl="+params[:lang]+"&u=http://browserchallenge.com/"
 end
@@ -284,17 +289,25 @@ body
 
 @@ mobile_safari
 body
-  :padding-top 3em
   :padding-left 1em
   :padding-right 1em
 .container  
   #content
-    h1
+    :padding-top 1em
+    h2
       :font-size 10em
     h3
       :font-size 190%
+      :padding-top 1em
   #footer
-    :font-size 100%
+    :font-size 85%
+    :width auto
+    :text-align center
+    p.copyright, p.translate
+      :float none
+      :text-align center
+      span
+        :display none
 
 @@ ie
 body#good, body#bad

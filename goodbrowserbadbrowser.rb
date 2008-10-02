@@ -98,16 +98,15 @@ __END__
         %p.copyright
           something nifty from <a href="http://www.seaofclouds.com">seaofclouds</a>&trade; | 
           %a{:href=>"http://github.com/seaofclouds/good-browser-bad-browser"} contribute
-        - if request.env["HTTP_HOST"] && request.env["HTTP_HOST"].include?("localhost") || request.env["HTTP_HOST"].include?("browser")
-          %p.translate
-            Translate &raquo;
-            %a{:href=>"/es"} Spanish
-            %span.separator=", "
-            %a{:href=>"/fr"} French
-            %span.separator=", "
-            %a{:href=>"/de"} German
-            %span.separator=", "
-            %a{:href=>"/zh-CN"} Chinese
+        %p.translate
+          Translate &raquo;
+          %a{:href=>"/es"} Spanish
+          %span.separator=", "
+          %a{:href=>"/fr"} French
+          %span.separator=", "
+          %a{:href=>"/de"} German
+          %span.separator=", "
+          %a{:href=>"/zh-CN"} Chinese
         
 @@ index
 %h2= @goodorbad

@@ -1,4 +1,4 @@
-good browser, bad browser is a very simple ruby and javascript based browser detection scripts that power the amazing multilingual good browser advocacy site: http://browserchallenge.com
+good browser, bad browser is a very simple ruby and javascript based browser detection scripts that power the  multilingual browser advocacy site: http://browserchallenge.com
 
 if you haven't already, download yourself a good browser from http://www.apple.com/safari/ or http://www.firefox.com, then tell your friends.
 
@@ -7,6 +7,8 @@ tshirts forthcoming. maybe...
 === contribute ===
 
 bring your code slinging skills to: http://github.com/seaofclouds/good-browser-bad-browser/ and help the cause!
+
+we recently added translations for english, german, spanish and french. please help us improve these translations, and contribute more. to submit a translation, visit http://gist.github.com/14732 and fork. then, translate from english to your language and save!
 
 === installation ===
 
@@ -23,3 +25,7 @@ blake mizerany http://github.com/bmizerany, for sinatra. awesome, awesome sinatr
 dennis hengeveld http://max.hengeveld.com/ for our chats about some browsers being lame.
 eugenia jongewaard http://www.etnikastudio.com/ for her nudge to add translations.
 21st amendment, for their fantastic beer.
+
+=== contact ===
+
+direct message seaofclouds on twitter, or on github with comments and questions!

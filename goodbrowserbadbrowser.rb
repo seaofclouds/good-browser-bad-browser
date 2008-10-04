@@ -65,6 +65,8 @@ get '/' do
   haml :index
 end
 
+# test views
+
 get '/bad' do
   CONFIG["en"].each { |key, value| instance_variable_set("@#{key}", value) }
   @goodorbad = "bad"
@@ -184,9 +186,9 @@ __END__
   .content-footer
     .badge 
       - if @goodorbad == "bad"
-        %a#browserchallengetext{:href=>'/bad/'+params[:lang], :class=>'badbrowser'}= @bad_browser
+        %a#browserchallengetext{:href=>params[:lang], :class=>'badbrowser'}= @bad_browser
       - else
-        %a#browserchallengetext{:href=>'/good/'+params[:lang], :class=>'goodbrowser'}= @good_browser
+        %a#browserchallengetext{:href=>params[:lang], :class=>'goodbrowser'}= @good_browser
     %h1 
       - if @goodorbad == "bad"
         = @bad_badge_intro

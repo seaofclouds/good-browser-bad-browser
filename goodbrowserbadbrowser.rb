@@ -186,9 +186,9 @@ __END__
   .content-footer
     .badge 
       - if @goodorbad == "bad"
-        %a#browserchallengetext{:href=>params[:lang], :class=>'badbrowser'}= @bad_browser
+        %a#browserchallengetext{:href=>'/'+"#{params[:lang]}", :class=>'badbrowser'}= @bad_browser
       - else
-        %a#browserchallengetext{:href=>params[:lang], :class=>'goodbrowser'}= @good_browser
+        %a#browserchallengetext{:href=>'/'+"#{params[:lang]}", :class=>'goodbrowser'}= @good_browser
     %h1 
       - if @goodorbad == "bad"
         = @bad_badge_intro

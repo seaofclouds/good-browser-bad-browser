@@ -140,10 +140,10 @@ __END__
               %img{:src=>"/flags/us.gif",:border=>"0"}
             %a{:href=>"/es"} 
               %img{:src=>"/flags/es.gif",:border=>"0"}
-            %a{:href=>"/t/fr"} 
-              %img{:src=>"/flags/fr.gif",:border=>"0"}
-            %a{:href=>"/t/de"} 
+            %a{:href=>"/de"} 
               %img{:src=>"/flags/de.gif",:border=>"0"}
+            %a{:href=>"/fr"} 
+              %img{:src=>"/flags/fr.gif",:border=>"0"}
             %a{:href=>"/t/zh-CN"} 
               %img{:src=>"/flags/cn.gif",:border=>"0"}
         

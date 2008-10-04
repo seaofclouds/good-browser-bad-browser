@@ -70,9 +70,20 @@ get '/bad' do
   @goodorbad = "bad"
   haml :index
 end
-
+get '/bad/:lang' do
+  CONFIG[params[:lang]].each { |key, value| instance_variable_set("@#{key}", value) }
+  @goodorbad = "bad"
+  whichbrowser
+  haml :index
+end
 get '/good' do
   CONFIG["en"].each { |key, value| instance_variable_set("@#{key}", value) }
+  @goodorbad = "good"
+  whichbrowser
+  haml :index
+end
+get '/good/:lang' do
+  CONFIG[params[:lang]].each { |key, value| instance_variable_set("@#{key}", value) }
   @goodorbad = "good"
   whichbrowser
   haml :index
@@ -185,7 +196,7 @@ __END__
     .clear
     #toggle_body{:style=>"display:none"}
       %textarea
-        = "&lt;style type=&quot;text/css&quot;&gt; #browserchallengetext { font-family: georgia, serif; text-decoration: none; font-weight: normal; font-size: 180%; line-height: 1.3em; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: .3em; color: #fff; } #browserchallengetext.goodbrowser { background-color: #2e7f3a; color: #fff; } #browserchallengetext.goodbrowser:hover { background-color: #1d6e29; } #browserchallengetext.badbrowser { background-color: #7f0100; color: #fff; } #browserchallengetext.badbrowser:hover { background-color: #6e0000; } &lt;/style&gt; &lt;script type=&quot;text/javascript&quot;&gt;var good_browser='"+@good_browser+"'; var bad_browser='"+@bad_browser+"'&lt;/script&gt;&lt;script src=&quot;http://browserchallenge.com/widget-text.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/&quot;&gt;"+@take_challenge+"&lt;/a&gt;&lt;/noscript&gt;"
+        = "&lt;style type=&quot;text/css&quot;&gt; #browserchallengetext { font-family: georgia, serif; text-decoration: none; font-weight: normal; font-size: 180%; line-height: 1.3em; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: .3em; color: #fff; } #browserchallengetext.goodbrowser { background-color: #2e7f3a; color: #fff; } #browserchallengetext.goodbrowser:hover { background-color: #1d6e29; } #browserchallengetext.badbrowser { background-color: #7f0100; color: #fff; } #browserchallengetext.badbrowser:hover { background-color: #6e0000; } &lt;/style&gt; &lt;script type=&quot;text/javascript&quot;&gt;var good_browser='"+@good_browser+"'; var bad_browser='"+@bad_browser+"'; var lang='"+"#{params[:lang]}"+"'&lt;/script&gt;&lt;script src=&quot;http://browserchallenge.com/widget-text.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/"+"#{params[:lang]}"+"&quot;&gt;"+@take_challenge+"&lt;/a&gt;&lt;/noscript&gt;"
 
 @@ main
 =clearfix

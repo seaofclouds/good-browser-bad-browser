@@ -30,19 +30,26 @@ helpers do
   def firefox?
     request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"].include?("Firefox")
   end
+  # which browser
+  def whichbrowser
+    if mobile_safari?
+      @browser="<a href='http://www.apple.com/iphone/features/safari.html'>mobile safari</a>"
+    elsif safari?
+      @browser="<a href='http://www.apple.com/safari/download/'>safari</a>"
+    elsif firefox?
+      @browser="<a href='http://www.firefox.com/'>firefox</a>"
+    end
+  end
   # good or bad
   def goodorbad
     if @goodorbad
       @goodorbad = @goodorbad
     elsif mobile_safari?
       @goodorbad = "good"
-      @browser="<a href='http://www.apple.com/iphone/features/safari.html'>mobile safari</a>"
     elsif safari?
       @goodorbad = "good"
-      @browser="<a href='http://www.apple.com/safari/download/'>safari</a>"
     elsif firefox?
       @goodorbad = "good"
-      @browser="<a href='http://www.firefox.com/'>firefox</a>"
     else
       @goodorbad = "bad"
     end
@@ -54,6 +61,7 @@ end
 get '/' do
   CONFIG["en"].each { |key, value| instance_variable_set("@#{key}", value) }
   goodorbad
+  whichbrowser
   haml :index
 end
 
@@ -66,6 +74,7 @@ end
 get '/good' do
   CONFIG["en"].each { |key, value| instance_variable_set("@#{key}", value) }
   @goodorbad = "good"
+  whichbrowser
   haml :index
 end
 
@@ -74,6 +83,7 @@ end
 get '/:lang' do
   CONFIG[params[:lang]].each { |key, value| instance_variable_set("@#{key}", value) }
   goodorbad
+  whichbrowser
   haml :index
 end
 

@@ -1,5 +1,5 @@
-var good_browser_link = "<a href='http://browserchallenge.com/"+lang+"' class='goodbrowser' id='browserchallengetext'>"+good_browser+"</a>"
-var bad_browser_link = "<a href='http://browserchallenge.com/"+lang+"' class='badbrowser' id='browserchallengetext'>"+bad_browser+"</a>"
+var good_browser_link = "<a href='http://browserchallenge.com/"+lang+"' class='browserchallenge_goodbrowser' id='browserchallenge_badge'>"+good_browser+"</a>"
+var bad_browser_link = "<a href='http://browserchallenge.com/"+lang+"' class='browserchallenge_badbrowser' id='browserchallenge_badge'>"+bad_browser+"</a>"
 
 if (/Safari[\/\s](\d+\.\d+)/.test(navigator.userAgent)){
   document.write(good_browser_link)

@@ -159,16 +159,11 @@ __END__
             %a{:href=>"http://github.com/seaofclouds/good-browser-bad-browser"} contribute
           %span.translate
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Translate &raquo;
-            %a{:href=>"/"} 
-              %img{:src=>"/flags/us.gif",:border=>"0"}
-            %a{:href=>"/es"} 
-              %img{:src=>"/flags/es.gif",:border=>"0"}
-            %a{:href=>"/de"} 
-              %img{:src=>"/flags/de.gif",:border=>"0"}
-            %a{:href=>"/fr"} 
-              %img{:src=>"/flags/fr.gif",:border=>"0"}
-            %a{:href=>"/t/zh-CN"} 
-              %img{:src=>"/flags/cn.gif",:border=>"0"}
+            %a{:href=>"/"} <img src="/flags/us.gif" border="0" />
+            %a{:href=>"/es"} <img src="/flags/es.gif" border="0" />
+            %a{:href=>"/de"} <img src="/flags/de.gif" border="0" />
+            %a{:href=>"/fr"} <img src="/flags/fr.gif" border="0" />
+            %a{:href=>"/t/zh-CN"} <img src="/flags/cn.gif" border="0" />
         
 @@ index
 %h2
@@ -184,31 +179,27 @@ __END__
     %h3= "#{@good_intro} #{@browser}#{@good_outro}"
 - unless mobile_safari?
   .content-footer
-    .badge 
-      - if @goodorbad == "bad"
-        %a#browserchallengetext{:href=>'/'+"#{params[:lang]}", :class=>'badbrowser'}= @bad_browser
-      - else
-        %a#browserchallengetext{:href=>'/'+"#{params[:lang]}", :class=>'goodbrowser'}= @good_browser
-    %h1 
-      - if @goodorbad == "bad"
-        = @bad_badge_intro
-      - else
-        = @good_badge_intro
-      %a.badge_toggle{:href=>"javascript:toggle('toggle_body')"}= @badge_toggle
-    .clear
+    %table{:cellspacing=>"0", :cellpadding=>"0", :border=>"0"}
+      %tr
+        %td.badge_intro{:valign=>"middle"}
+          %h1 
+            - if @goodorbad == "bad"
+              = @bad_badge_intro
+            - else
+              = @good_badge_intro
+            &nbsp;
+            %a.badge_toggle{:href=>"javascript:toggle('toggle_body')"}= @badge_toggle
+        %td.badge{:valign=>"middle"}
+          - if @goodorbad == "bad"
+            %a#browserchallenge_badge{:href=>'/'+"#{params[:lang]}", :class=>'browserchallenge_badbrowser'}= @bad_browser
+          - else
+            %a#browserchallenge_badge{:href=>'/'+"#{params[:lang]}", :class=>'browserchallenge_goodbrowser'}= @good_browser
+
     #toggle_body{:style=>"display:none"}
       %textarea
-        = "&lt;style type=&quot;text/css&quot;&gt; #browserchallengetext { font-family: georgia, serif; text-decoration: none; font-weight: normal; font-size: 180%; line-height: 1.3em; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: .3em; color: #fff; } #browserchallengetext.goodbrowser { background-color: #2e7f3a; color: #fff; background-image: url(http://browserchallenge.com/badge-bg-good.png); background-repeat: repeat-x; background-position: center bottom; } #browserchallengetext.goodbrowser:hover { background-color: #1d6e29; } #browserchallengetext.badbrowser { background-color: #7f0100; color: #fff; } #browserchallengetext.badbrowser:hover { background-color: #6e0000; } &lt;/style&gt; &lt;script type=&quot;text/javascript&quot;&gt;var good_browser='"+@good_browser+"'; var bad_browser='"+@bad_browser+"'; var lang='"+"#{params[:lang]}"+"'&lt;/script&gt;&lt;script src=&quot;http://browserchallenge.com/widget-text.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/"+"#{params[:lang]}"+"&quot;&gt;"+@take_challenge+"&lt;/a&gt;&lt;/noscript&gt;"
+        = "&lt;style type=&quot;text/css&quot;&gt; #browserchallenge_badge { font-family: georgia, serif !important; text-decoration: none !important; font-weight: normal !important; font-size: 180% !important; line-height: 1.3em !important; -moz-border-radius: 3px !important; -webkit-border-radius: 3px !important; padding: .3em !important; color: #fff !important; white-space: nowrap !important; } .browserchallenge_goodbrowser { background-color: #2e7f3a !important; color: #fff !important; background-image: url(http://browserchallenge.com/badge-bg-good.png) !important; background-repeat: repeat-x !important; background-position: center bottom !important; } .browserchallenge_goodbrowser:hover { background-color: #1d6e29 !important; } .browserchallenge_badbrowser { background-color: #7f0100 !important; color: #fff !important; } .browserchallenge_badbrowser:hover { background-color: #6e0000 !important; } &lt;/style&gt; &lt;script type=&quot;text/javascript&quot;&gt;var good_browser='"+@good_browser+"'; var bad_browser='"+@bad_browser+"'; var lang='"+"#{params[:lang]}"+"'&lt;/script&gt;&lt;script src=&quot;http://browserchallenge.com/widget-text.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/"+"#{params[:lang]}"+"&quot;&gt;"+@take_challenge+"&lt;/a&gt;&lt;/noscript&gt;"
 
 @@ main
-=clearfix
-  &:after
-    :content "."
-    :display block
-    :clear both
-    :visibility hidden
-    :line-height 0
-    :height 0
 !green = #2E7F3A
 !red = #7f0100
 *
@@ -239,25 +230,32 @@ body
       a
         :color #fff
     .content-footer
-      :width 39em
-      :padding 1em
+      :width 40em
       :margin 0 auto
-      :margin-bottom 1em
       :-webkit-border-radius 1em
       :-moz-border-radius 1em
       :background-color #eee
       :text-align left
-      h1
-        :font-size 120%
-      .badge_toggle
-        :padding-left .5em
-        &:hover
-          :color = !green - #222
-      .badge
-        :padding-top .7em
-        :padding-right .5em
+      td
+        :padding-top 1em
+        :padding-bottom 1em
+      .badge_intro
         :padding-left 1em
-        :float right
+        :padding-right 2em
+        :background-image url(arrow-fade.gif)
+        :background-repeat no-repeat
+        :background-position right center
+        h1
+          :font-size 120%
+          :text-transform lowercase
+        .badge_toggle
+          :white-space nowrap
+      .badge
+        :white-space nowrap
+        :padding-right 1em
+        :padding-left 1em
+      #toggle_body
+        :padding 0 1em 1em 1em
       textarea
         :margin-top 1em
         :width 100%
@@ -267,40 +265,6 @@ body
         :height 10em
         :line-height 1.5em
         :font-size 85%
-      p
-        :padding-bottom 1em
-        :font-weight bold
-      p.help
-        :padding-bottom .3em
-        :font-weight normal
-      p.mt10
-        :margin-top 1em
-        :padding-bottom .5em
-      .clear
-        :clear both
-      #browserchallengetext
-        :font-family georgia, serif
-        :text-decoration none
-        :font-weight normal
-        :font-size 180%
-        :line-height 1.3em
-        :-moz-border-radius 3px
-        :-webkit-border-radius 3px
-        :padding .3em
-        :color #fff
-        &.goodbrowser
-          :background-color = !green
-          :color #fff
-          :background-image url(http://browserchallenge.com/badge-bg-good.png)
-          :background-repeat repeat-x
-          :background-position center bottom
-          &:hover
-            :background-color = !green - #111
-        &.badbrowser
-          :background-color = !red
-          :color #fff
-          &:hover
-            :background-color = !red - #111
   #footer
     :font-size .85em
     :color #aaa
@@ -312,14 +276,45 @@ body
     %span.translate
       img
         :margin-bottom -.2em
+
+// browser challenge badge
+        
+#browserchallenge_badge
+  :font-family georgia, serif !important
+  :text-decoration none !important
+  :font-weight normal !important
+  :font-size 180% !important
+  :line-height 1.3em !important
+  :-moz-border-radius 3px !important
+  :-webkit-border-radius 3px !important
+  :padding .3em !important
+  :color #fff !important
+  :white-space nowrap !important
+.browserchallenge_goodbrowser
+  :background-color = !green  !important
+  :color #fff !important
+  :background-image url(http://browserchallenge.com/badge-bg-good.png) !important
+  :background-repeat repeat-x !important
+  :background-position center bottom !important
+  &:hover
+    :background-color = !green - #111  !important
+.browserchallenge_badbrowser
+  :background-color = !red !important
+  :color #fff !important
+  &:hover
+    :background-color = !red - #111 !important
+
 #bad
   :background-color = !red
   .container
     #content
       .content-footer
-        :color = !red - #111
-        a
-          :color = !red
+        td
+          :color = !red - #111
+          a
+            :color = !red
+            &:hover
+              :color = !red - #222
         textarea
           :color = !red
   #footer
@@ -329,9 +324,12 @@ body
 #good
   :background-color = !green
   .content-footer
-    :color = !green
-    a
+    td
       :color = !green
+      a
+        :color = !green
+        &:hover
+          :color = !green - #222
     textarea
       :color = !green
   #footer
@@ -362,6 +360,3 @@ body#good, body#bad
     #content
       .content-footer
         :width 42em
-        .textbadge
-          p
-            :height 4em

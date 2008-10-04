@@ -20,7 +20,7 @@ es:
   good_badge_intro:  Mostrar el mundo le preocupa el tema de estándares web. instalar el "navegador desafío" en su sitio web.
   bad:  mal
   bad_intro: tratar a ti mismo algo bueno.
-  bad_outro: actualizar a <a href="http://www.apple.com/safari/download/"> safari </ a> o <a href="http://firefox.com/"> firefox </ a> hoy!
+  bad_outro: actualizar a <a href='http://www.apple.com/safari/download/'>safari</a> o <a href='http://firefox.com/'>firefox</a> hoy!
   bad_browser: mala navegador
   bad_badge_intro:  aunque una mala utilización del navegador web, puede mostrar su interés en estándares web e instalar el "navegador desafío" insignia en su sitio web.
   badge_toggle: obtener código
@@ -34,21 +34,21 @@ de:
   good_badge_intro:  der Welt zeigen, die Sie interessieren Web-Standards und setzen Sie den Browser Herausforderung Badge auf Ihrer Website.
   bad:  schlecht
   bad_intro: Gönnen Sie sich etwas Gutes.
-  bad_outro: Upgrade auf <a href="http://www.apple.com/safari/download/"> Safari </ a> oder <a href="http://firefox.com/"> Firefox </ a> heute!
-  bad_browser: Bad Browser
+  bad_outro: Upgrade auf <a href='http://www.apple.com/safari/download/'>safari</a> oder <a href="http://firefox.com/">firefox</a> heute!
+  bad_browser: schlecht Browser
   bad_badge_intro: auch wenn Sie einen schlechten Browser, können Sie noch zeigen Sie Ihr Gespür für Web-Standards. grünes Licht und setzen Sie den Browser Herausforderung Badge auf Ihrer Website.
   badge_toggle: Code abrufen
   take_challenge: nehmen Sie die Browser Herausforderung
   
 fr:
-   good: la bonne
+   good: bien
    good_intro: vous utilisez
    good_outro: ", un bon navigateur web."
    good_browser: bon navigateur
    good_badge_intro: montrer au monde vous vous souciez de standards Web et installer le navigateur défi badge sur votre site.
-   bad: la mauvaise
+   bad: mauvaise
    bad_intro: Accordez-vous quelque chose de bien.
-   bad_outro: la mise à niveau vers <a href="http://www.apple.com/safari/download/"> safari </ a> ou <a href="http://firefox.com/"> Firefox </ a > Aujourd'hui!
+   bad_outro: la mise à niveau vers <a href='http://www.apple.com/safari/download/'>safari</a> ou <a href="http://firefox.com/">firefox</a> Aujourd'hui!
    bad_browser: mauvaise navigateur
    bad_badge_intro: même si vous utilisez un mauvais navigateur, vous pouvez quand même présenter votre flair pour les standards du Web. aller de l'avant et mettre le navigateur défi badge sur votre site.
    badge_toggle: obtenir le code

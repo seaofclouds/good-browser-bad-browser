@@ -6,7 +6,7 @@ en:
   good_badge_intro:  show the world you care about web standards and put the browser challenge badge on your site.
   bad:  bad
   bad_intro: treat yourself to something good.
-  bad_outro: upgrade to <a href="http://www.apple.com/safari/download/">safari</a> or <a href="http://firefox.com/">firefox</a> today!
+  bad_outro: upgrade to <a href='http://www.apple.com/safari/download/'>safari</a> or <a href='http://firefox.com/'>firefox</a> today!
   bad_browser: bad browser
   bad_badge_intro:  even though you're using a bad browser, you can still show off your flair for web standards. go ahead and put the browser challenge badge on your site.
   badge_toggle: get code
@@ -34,7 +34,7 @@ de:
   good_badge_intro:  der Welt zeigen, die Sie interessieren Web-Standards und setzen Sie den Browser Herausforderung Badge auf Ihrer Website.
   bad:  schlecht
   bad_intro: Gönnen Sie sich etwas Gutes.
-  bad_outro: Upgrade auf <a href='http://www.apple.com/safari/download/'>safari</a> oder <a href="http://firefox.com/">firefox</a> heute!
+  bad_outro: Upgrade auf <a href='http://www.apple.com/safari/download/'>safari</a> oder <a href='http://firefox.com/'>firefox</a> heute!
   bad_browser: schlecht Browser
   bad_badge_intro: auch wenn Sie einen schlechten Browser, können Sie noch zeigen Sie Ihr Gespür für Web-Standards. grünes Licht und setzen Sie den Browser Herausforderung Badge auf Ihrer Website.
   badge_toggle: Code abrufen
@@ -48,7 +48,7 @@ fr:
    good_badge_intro: montrer au monde vous vous souciez de standards Web et installer le navigateur défi badge sur votre site.
    bad: mauvaise
    bad_intro: Accordez-vous quelque chose de bien.
-   bad_outro: la mise à niveau vers <a href='http://www.apple.com/safari/download/'>safari</a> ou <a href="http://firefox.com/">firefox</a> Aujourd'hui!
+   bad_outro: la mise à niveau vers <a href='http://www.apple.com/safari/download/'>safari</a> ou <a href='http://firefox.com/'>firefox</a> Aujourd'hui!
    bad_browser: mauvaise navigateur
    bad_badge_intro: même si vous utilisez un mauvais navigateur, vous pouvez quand même présenter votre flair pour les standards du Web. aller de l'avant et mettre le navigateur défi badge sur votre site.
    badge_toggle: obtenir le code

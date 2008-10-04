@@ -1,4 +1,4 @@
-good browser, bad browser is a set of very simple ruby and javascript based browser detection scripts that power the amazing good browser advocacy site: http://browserchallenge.com
+good browser, bad browser is a very simple ruby and javascript based browser detection scripts that power the amazing multilingual good browser advocacy site: http://browserchallenge.com
 
 if you haven't already, download yourself a good browser from http://www.apple.com/safari/ or http://www.firefox.com, then tell your friends.
 
@@ -6,7 +6,7 @@ tshirts forthcoming. maybe...
 
 === contribute ===
 
-bring your code slinging skills over to: http://github.com/seaofclouds/good-browser-bad-browser/ and help the cause!
+bring your code slinging skills to: http://github.com/seaofclouds/good-browser-bad-browser/ and help the cause!
 
 === installation ===
 
@@ -15,7 +15,6 @@ git clone git://github.com/seaofclouds/good-browser-bad-browser.git
 sinatra is now included in the vendor directory, so to keep it up to date, you can do:
 
 git submodule init && git submodule update
-
 
 === thanks ===
 

@@ -1,0 +1,30 @@
+en:
+  good: good
+  good_intro: you're using
+  good_outro: ", a good web browser." 
+  good_browser: good browser
+  good_badge_intro:  show the world you care about web standards and put the browser challenge badge on your site.
+  bad:  bad
+  bad_intro: treat yourself to something good.
+  bad_outro: upgrade to <a href="http://www.apple.com/safari/download/">safari</a> or <a href="http://firefox.com/">firefox</a> today!
+  bad_browser: bad browser
+  bad_badge_intro:  even though you're using a bad browser, you can still show off your flair for web standards. go ahead and put the browser challenge badge on your site.
+  badge_toggle: get code
+  badge_how:  copy the code for our css styleable text badge, and paste into your site's template. 
+  take_challenge: take the browser challenge
+  
+es:
+  good: bueno
+  good_intro: se está usando
+  good_outro: ", un buen navegador web." 
+  good_browser: buen navegador
+  good_badge_intro:  mostrar al mundo le preocupa el tema de estándares web y poner el navegador insignia reto en su sitio.
+  bad:  mal
+  bad_intro: treat yourself to something good.
+  bad_outro: upgrade to <a href="http://www.apple.com/safari/download/">safari</a> or <a href="http://firefox.com/">firefox</a> today!
+  bad_browser: mal navegador
+  bad_badge_intro:  even though you're using a bad browser, you can still show off your flair for web standards. go ahead and put the browser challenge badge on your site.
+  badge_toggle: get code
+  badge_how:  copia y pegar el código de nuestro glorioso, css insignia de texto en su sitio de la plantilla.
+  take_challenge: take the browser challenge
+  

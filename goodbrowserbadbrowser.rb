@@ -4,10 +4,16 @@ $LOAD_PATH.unshift(File.dirname(__FILE__) + '/vendor/sinatra/lib')
 # goodbrowserbadbrowser.rb
 require 'rubygems'
 require 'sinatra'
+require 'yaml'
 
 not_found do
   headers["Status"] = "301 Moved Permanently"
   redirect("/")
+end
+
+configure do
+  # Load our configuration file.
+  CONFIG = YAML.load_file("translations.yml")
 end
 
 helpers do
@@ -30,34 +36,53 @@ helpers do
       @goodorbad = @goodorbad
     elsif mobile_safari?
       @goodorbad = "good"
+      @browser="<a href='http://www.apple.com/iphone/features/safari.html'>mobile safari</a>"
     elsif safari?
       @goodorbad = "good"
+      @browser="<a href='http://www.apple.com/safari/download/'>safari</a>"
     elsif firefox?
       @goodorbad = "good"
+      @browser="<a href='http://www.firefox.com/'>firefox</a>"
     else
       @goodorbad = "bad"
     end
   end
 end
 
+# views
+
 get '/' do
+  CONFIG["en"].each { |key, value| instance_variable_set("@#{key}", value) }
   goodorbad
   haml :index
 end
 
 get '/bad' do
+  CONFIG["en"].each { |key, value| instance_variable_set("@#{key}", value) }
   @goodorbad = "bad"
   haml :index
 end
 
 get '/good' do
+  CONFIG["en"].each { |key, value| instance_variable_set("@#{key}", value) }
   @goodorbad = "good"
   haml :index
 end
 
+# translations
+
 get '/:lang' do
+  CONFIG[params[:lang]].each { |key, value| instance_variable_set("@#{key}", value) }
+  goodorbad
+  haml :index
+end
+
+get '/t/:lang' do
   redirect "http://translate.google.com/translate_c?hl=en&sl=en&tl="+params[:lang]+"&u=http://browserchallenge.com/"
 end
+
+
+# stylesheets
 
 get '/main.css' do
   content_type 'text/css', :charset => 'utf-8'
@@ -80,7 +105,11 @@ __END__
 !!!
 %html
   %head
-    %title= @goodorbad + " browser"
+    %title
+      - if @goodorbad == "bad"
+        = @bad_browser 
+      - else
+        = @good_browser
     %link{:rel => "shortcut icon", :href => "/favicon_"+"#{@goodorbad}"+".ico"}
     %link{:href=>"/main.css", :media=>"all", :rel=>"stylesheet", :type=>"text/css"}/
     - if ie?
@@ -88,9 +117,15 @@ __END__
     - if mobile_safari?
       %link{:href=>"/mobile_safari.css", :media=>"all", :rel=>"stylesheet", :type=>"text/css"}/
       %meta{:name => "viewport", :content => "width = device-width, initial-scale = 1.0"}/
+    %script{:type=>"text/javascript"}
+      :plain
+        function toggle(obj) {
+          var el = document.getElementById(obj);
+          el.style.display = (el.style.display != 'none' ? 'none' : '' );
+        }        
   %body{:id => "#{@goodorbad}"}
     .container
-      #content 
+      #content
         = yield
       #footer 
         <script src="http://static.getclicky.com/38270.js" type="text/javascript"></script>
@@ -100,57 +135,46 @@ __END__
           %a{:href=>"http://github.com/seaofclouds/good-browser-bad-browser"} contribute
         %p.translate
           Translate &raquo;
-          %a{:href=>"/es"} Spanish
-          %span.separator=", "
-          %a{:href=>"/fr"} French
-          %span.separator=", "
-          %a{:href=>"/de"} German
-          %span.separator=", "
-          %a{:href=>"/zh-CN"} Chinese
+          %a{:href=>"/"} 
+            %img{:src=>"/flags/us.gif",:border=>"0"}
+          %a{:href=>"/es"} 
+            %img{:src=>"/flags/es.gif",:border=>"0"}
+          %a{:href=>"/t/fr"} 
+            %img{:src=>"/flags/fr.gif",:border=>"0"}
+          %a{:href=>"/t/de"} 
+            %img{:src=>"/flags/de.gif",:border=>"0"}
+          %a{:href=>"/t/zh-CN"} 
+            %img{:src=>"/flags/cn.gif",:border=>"0"}
         
 @@ index
-%h2= @goodorbad
+%h2
+  - if @goodorbad == "bad"
+    = @bad
+  - else
+    = @good
 .content-body 
   - if @goodorbad == "bad"
-    %h3 treat yourself to something good.
-    %h4 upgrade to <a href="http://www.apple.com/safari/download/">safari</a> or <a href="http://firefox.com/">firefox</a> today!
+    %h3= @bad_intro
+    %h4= @bad_outro
   - else
-    %h3 
-      you're using 
-      - if safari?
-        - if mobile_safari?
-          mobile safari,
-        - else
-          <a href="http://www.apple.com/safari/">safari</a>,
-      - if firefox?
-        <a href="http://www.firefox.com">firefox</a>,
-      a good web browser.
+    %h3= "#{@good_intro} #{@browser}#{@good_outro}"
 - unless mobile_safari?
   .content-footer
+    .badge 
+      - if @goodorbad == "bad"
+        %a#browserchallengetext{:href=>'/bad', :class=>'badbrowser'}= @bad_browser
+      - else
+        %a#browserchallengetext{:href=>'/good', :class=>'goodbrowser'}= @good_browser
     %h1 
       - if @goodorbad == "bad"
-        even though you're using a bad browser, you can still show off your flair for web standards. go ahead and put the browser challenge badge on your site.
+        = @bad_badge_intro
       - else
-        show the world you care about web standards and put the browser challenge badge on your site.
-    .imagebadge
-      %p.badge 
-        - if @goodorbad == "bad"
-          <a href="/bad" class="badbrowser" id="browserchallenge"><img src="/badge-bad.gif" alt="take the browser challenge" border="0" /></a>
-        - else
-          <a href="/good" class="goodbrowser" id="browserchallenge"><img src="/badge-good.png" alt="take the browser challenge" border="0" /></a>
-      %p.help copy, then paste the code for our easy does it, stylin' <strong>image badge</strong> into your site's template.
-      %textarea &lt;script language=&quot;javascript&quot; src=&quot;http://browserchallenge.com/widget.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/&quot;&gt;&lt;img alt=&quot;take the browser challenge&quot; src=&quot;http://browserchallenge.com/badge-goodbad.gif&quot; /&gt;&lt;/a&gt;&lt;/noscript&gt;
-    .textbadge
-      %p.badge 
-        - if @goodorbad == "bad"
-          <a href='/bad' class='badbrowser' id='browserchallengetext'>bad browser</a>
-        - else
-          <a href='/good' class='goodbrowser' id='browserchallengetext'>good browser</a>
-      %p.help
-        copy, then paste the code for our glorious, css styleable <strong>text badge</strong> into your site's template.
-      %textarea
-        &lt;style type=&quot;text/css&quot;&gt; #browserchallengetext {font-family: georgia, serif; text-decoration: none;font-weight: normal;font-size: 160%; line-height: 1.3em; } #browserchallengetext:hover {text-decoration: underline; } a.badbrowser {color: #7f0100;} a.goodbrowser {color: #2e7f3a;} &lt;/style&gt; &lt;script language=&quot;javascript&quot; src=&quot;http://browserchallenge.com/widget-text.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/&quot;&gt;take the browser challenge&lt;/a&gt;&lt;/noscript&gt;
+        = @good_badge_intro
+      %a.badge_toggle{:href=>"javascript:toggle('toggle_body')"}= @badge_toggle
     .clear
+    #toggle_body{:style=>"display:none"}
+      %textarea
+        = "&lt;style type=&quot;text/css&quot;&gt; #browserchallengetext {font-family: georgia, serif; text-decoration: none;font-weight: normal;font-size: 160%; line-height: 1.3em; } #browserchallengetext:hover {text-decoration: underline; } a.badbrowser {color: #7f0100;} a.goodbrowser {color: #2e7f3a;} &lt;/style&gt; &lt;script language=&quot;javascript&quot; src=&quot;http://browserchallenge.com/widget-text.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/&quot;&gt;"+@take_challenge+"&lt;/a&gt;&lt;/noscript&gt;"
 
 @@ main
 =clearfix
@@ -200,35 +224,34 @@ body
       :background-color #eee
       :text-align left
       h1
-        :font-size 130%
+        :font-size 120%
+      .badge_toggle
+        :padding-left .5em
+        &:hover
+          :color = !green - #222
+      .badge
+        :padding-top .7em
+        :padding-right .5em
+        :padding-left 1em
+        :float right
+      textarea
+        :margin-top 1em
+        :width 100%
+        :border 1px solid #ccc
+        :word-break break-word
+        :font-family monaco, monospace
+        :height 10em
+        :line-height 1.5em
+        :font-size 85%
+      p
         :padding-bottom 1em
-      .imagebadge, .textbadge
-        :width 18.3em
-        :float left
-        .badge
-          :text-align center
-          :height 2.5em
-        textarea
-          :width 100%
-          :border 1px solid #ccc
-          :word-break break-word
-          :font-family monaco, monospace
-          :height 10em
-          :line-height 1.5em
-          :font-size 85%
-        p
-          :padding-bottom 1em
-          :font-weight bold
-        p.help
-          :padding-bottom .3em
-          :font-weight normal
-        p.mt10
-          :margin-top 1em
-          :padding-bottom .5em
-      .imagebadge
-        :margin-right 1em
-        :padding-right 1em
-        :border-right 1px solid #ccc
+        :font-weight bold
+      p.help
+        :padding-bottom .3em
+        :font-weight normal
+      p.mt10
+        :margin-top 1em
+        :padding-bottom .5em
       .clear
         :clear both
       #browserchallengetext
@@ -237,8 +260,20 @@ body
         :font-weight normal
         :font-size 180%
         :line-height 1.3em
-        &:hover
-          :text-decoration underline
+        :-moz-border-radius 3px
+        :-webkit-border-radius 3px
+        :padding .3em
+        :color #fff
+        &.goodbrowser
+          :background-color = !green
+          :color #fff
+          &:hover
+            :background-color = !green - #111
+        &.badbrowser
+          :background-color = !red
+          :color #fff
+          &:hover
+            :background-color = !red - #111
   #footer
     :font-size .85em
     :color #aaa
@@ -255,6 +290,8 @@ body
       :float right
       :text-align right
       +clearfix
+      img
+        :margin-bottom -.2em
 #bad
   :background-color = !red
   .container
@@ -310,9 +347,6 @@ body#good, body#bad
     #content
       .content-footer
         :width 42em
-        .imagebadge, .textbadge
-          :width 20em
+        .textbadge
           p
             :height 4em
-        .imagebadge
-          :padding-right .3em

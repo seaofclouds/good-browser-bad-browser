@@ -133,6 +133,7 @@ __END__
         = @bad_browser 
       - else
         = @good_browser
+    %meta{'http-equiv'=>"content-type", :content=>"text/html; charset=UTF-8"}/
     %link{:rel => "shortcut icon", :href => "/favicon_"+"#{@goodorbad}"+".ico"}
     %link{:href=>"/main.css", :media=>"all", :rel=>"stylesheet", :type=>"text/css"}/
     - if ie?
@@ -359,4 +360,6 @@ body#good, body#bad
   .container
     #content
       .content-footer
-        :width 42em
+        :width 48em
+        td
+          :font-size .95em

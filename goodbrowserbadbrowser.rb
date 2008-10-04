@@ -130,21 +130,22 @@ __END__
       #footer 
         <script src="http://static.getclicky.com/38270.js" type="text/javascript"></script>
         <noscript><img alt="Clicky" src="http://in.getclicky.com/38270-db5.gif" /></noscript>
-        %p.copyright
-          something nifty from <a href="http://www.seaofclouds.com">seaofclouds</a>&trade; | 
-          %a{:href=>"http://github.com/seaofclouds/good-browser-bad-browser"} contribute
-        %p.translate
-          Translate &raquo;
-          %a{:href=>"/"} 
-            %img{:src=>"/flags/us.gif",:border=>"0"}
-          %a{:href=>"/es"} 
-            %img{:src=>"/flags/es.gif",:border=>"0"}
-          %a{:href=>"/t/fr"} 
-            %img{:src=>"/flags/fr.gif",:border=>"0"}
-          %a{:href=>"/t/de"} 
-            %img{:src=>"/flags/de.gif",:border=>"0"}
-          %a{:href=>"/t/zh-CN"} 
-            %img{:src=>"/flags/cn.gif",:border=>"0"}
+        %p
+          %span.copyright
+            something nifty from <a href="http://www.seaofclouds.com">seaofclouds</a>&trade; | 
+            %a{:href=>"http://github.com/seaofclouds/good-browser-bad-browser"} contribute
+          %span.translate
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Translate &raquo;
+            %a{:href=>"/"} 
+              %img{:src=>"/flags/us.gif",:border=>"0"}
+            %a{:href=>"/es"} 
+              %img{:src=>"/flags/es.gif",:border=>"0"}
+            %a{:href=>"/t/fr"} 
+              %img{:src=>"/flags/fr.gif",:border=>"0"}
+            %a{:href=>"/t/de"} 
+              %img{:src=>"/flags/de.gif",:border=>"0"}
+            %a{:href=>"/t/zh-CN"} 
+              %img{:src=>"/flags/cn.gif",:border=>"0"}
         
 @@ index
 %h2
@@ -174,7 +175,7 @@ __END__
     .clear
     #toggle_body{:style=>"display:none"}
       %textarea
-        = "&lt;style type=&quot;text/css&quot;&gt; #browserchallengetext {font-family: georgia, serif; text-decoration: none;font-weight: normal;font-size: 160%; line-height: 1.3em; } #browserchallengetext:hover {text-decoration: underline; } a.badbrowser {color: #7f0100;} a.goodbrowser {color: #2e7f3a;} &lt;/style&gt; &lt;script language=&quot;javascript&quot; src=&quot;http://browserchallenge.com/widget-text.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/&quot;&gt;"+@take_challenge+"&lt;/a&gt;&lt;/noscript&gt;"
+        = "&lt;style type=&quot;text/css&quot;&gt; #browserchallengetext { font-family: georgia, serif; text-decoration: none; font-weight: normal; font-size: 180%; line-height: 1.3em; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: .3em; color: #fff; } #browserchallengetext.goodbrowser { background-color: #2e7f3a; color: #fff; } #browserchallengetext.goodbrowser:hover { background-color: #1d6e29; } #browserchallengetext.badbrowser { background-color: #7f0100; color: #fff; } #browserchallengetext.badbrowser:hover { background-color: #6e0000; } &lt;/style&gt; &lt;script type=&quot;text/javascript&quot;&gt;var good_browser='"+@good_browser+"'; var bad_browser='"+@bad_browser+"'&lt;/script&gt;&lt;script src=&quot;http://browserchallenge.com/widget-text.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/&quot;&gt;"+@take_challenge+"&lt;/a&gt;&lt;/noscript&gt;"
 
 @@ main
 =clearfix
@@ -282,14 +283,7 @@ body
     a
       :color #aaa
       &:hover #fff
-    :width 60em
-    :margin 0 auto
-    p.copyright
-      :float left
-    p.translate
-      :float right
-      :text-align right
-      +clearfix
+    %span.translate
       img
         :margin-bottom -.2em
 #bad
@@ -335,11 +329,6 @@ body
     :font-size 85%
     :width auto
     :text-align center
-    p.copyright, p.translate
-      :float none
-      :text-align center
-      span
-        :display none
 
 @@ ie
 body#good, body#bad

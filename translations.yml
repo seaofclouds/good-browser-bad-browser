@@ -53,3 +53,17 @@ fr:
    bad_badge_intro: même si vous utilisez un mauvais navigateur, vous pouvez quand même présenter votre flair pour les standards du Web. aller de l'avant et mettre le navigateur défi badge sur votre site.
    badge_toggle: obtenir le code
    take_challenge: prendre le navigateur défi
+   
+cn:
+  good: 棒
+  good_intro: 您使用的是
+  good_outro: ", 相当赞的浏览器."
+  good_browser: 很棒的浏览器
+  good_badge_intro: 如果您希望帮助更多人得到良好的网络冲浪体验，请帮助我们在您的网站上推广更加符合Web标准的浏览器，现在就将我们的检测控件添加到您的网站吧。
+  bad: 糟糕
+  bad_intro: 您应该选择一款更棒的浏览器，
+  bad_outro: 现在就升级到 <a href='http://www.apple.com/safari/download/'>safari</a> 或者 <a href='http://firefox.com/'>火狐</a> 浏览器吧!
+  bad_browser: 糟糕的浏览器
+  bad_badge_intro: 尽管您使用的浏览器很糟，您还是可以帮助我们一起推广更加符合Web标准的浏览器，现在就将我们的检测控件添加到您的网站吧。
+  badge_toggle: 获取代码
+  take_challenge: 你的浏览器够好吗？

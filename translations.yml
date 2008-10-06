@@ -14,17 +14,17 @@ en:
   
 es:
   good: bueno
-  good_intro: se está usando
-  good_outro: ", un buen navegador web." 
-  good_browser: buen navegador
-  good_badge_intro:  Mostrar el mundo le preocupa el tema de estándares web. instalar el navegador desafío en su sitio web.
-  bad:  mal
-  bad_intro: tratar a ti mismo algo bueno.
-  bad_outro: actualizar a <a href='http://www.apple.com/safari/download/'>safari</a> o <a href='http://firefox.com/'>firefox</a> hoy!
-  bad_browser: mala navegador
-  bad_badge_intro:  aunque una mala utilización del navegador web, puede mostrar su interés en estándares web e instalar el "navegador desafío" insignia en su sitio web.
-  badge_toggle: obtener código
-  take_challenge: prueba de su navegador
+  good_intro: estas usando
+  good_outro: ", un buen navegador."
+  good_browser: navegador bueno
+  good_badge_intro: muéstrale al mundo que te preocupas por los estándares web y agrega el desafío en tu sitio.
+  bad: malo
+  bad_intro: haz algo bueno por tí!.
+  bad_outro: actualiza a <a href='http://www.apple.com/safari/download/'>safari</a> o <a href='http://firefox.com/'>firefox</a> hoy!
+  bad_browser: navegador malo
+  bad_badge_intro: aunque estes usando un navegador malo, tu puedes mostrar interés por los estándares web y agregar el desafío en tu sitio!
+  badge_toggle: obtener el código
+  take_challenge: haz el desafío del navegador
   
 de:
   good: Gut

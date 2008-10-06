@@ -125,8 +125,8 @@ __END__
 
 @@ layout
 !!! XML
-!!!
-%html
+!!! Strict
+%html{ :xmlns => "http://www.w3.org/1999/xhtml", :lang => "en", 'xml:lang' => "en" }
   %head
     %title
       - if @goodorbad == "bad"
@@ -160,10 +160,10 @@ __END__
             %a{:href=>"http://github.com/seaofclouds/good-browser-bad-browser"} contribute
           %span.translate
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Translate &raquo;
-            %a{:href=>"/"} <img src="/flags/us.gif" border="0" />
-            %a{:href=>"/de"} <img src="/flags/de.gif" border="0" />
-            %a{:href=>"/cn"} <img src="/flags/cn.gif" border="0" />
-            %a{:href=>"/es"} <img src="/flags/es.gif" border="0" />
+            %a{:href=>"/"} <img src="/flags/us.gif" border="0" alt="english" />
+            %a{:href=>"/de"} <img src="/flags/de.gif" border="0" alt="deutsch" />
+            %a{:href=>"/cn"} <img src="/flags/cn.gif" border="0" alt="中国" />
+            %a{:href=>"/es"} <img src="/flags/es.gif" border="0" alt="español" />
         
 @@ index
 %h2
@@ -196,7 +196,7 @@ __END__
             %a#browserchallenge_badge{:href=>'/'+"#{params[:lang]}", :class=>'browserchallenge_goodbrowser'}= @good_browser
 
     #toggle_body{:style=>"display:none"}
-      %textarea
+      %textarea{:rows=>"7", :cols=>"12"}
         = "&lt;style type=&quot;text/css&quot;&gt; #browserchallenge_badge { font-family: georgia, serif !important; text-decoration: none !important; font-weight: normal !important; font-size: 180% !important; line-height: 1.3em !important; -moz-border-radius: 3px !important; -webkit-border-radius: 3px !important; padding: .3em !important; color: #fff !important; white-space: nowrap !important; } .browserchallenge_goodbrowser { background-color: #2e7f3a !important; color: #fff !important; background-image: url(http://browserchallenge.com/badge-bg-good.png) !important; background-repeat: repeat-x !important; background-position: center bottom !important; } .browserchallenge_goodbrowser:hover { background-color: #1d6e29 !important; } .browserchallenge_badbrowser { background-color: #7f0100 !important; color: #fff !important; } .browserchallenge_badbrowser:hover { background-color: #6e0000 !important; } &lt;/style&gt; &lt;script type=&quot;text/javascript&quot;&gt;var good_browser='"+@good_browser+"'; var bad_browser='"+@bad_browser+"'; var lang='"+"#{params[:lang]}"+"'&lt;/script&gt;&lt;script src=&quot;http://browserchallenge.com/widget-text.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/"+"#{params[:lang]}"+"&quot;&gt;"+@take_challenge+"&lt;/a&gt;&lt;/noscript&gt;"
 
 @@ main

@@ -164,7 +164,6 @@ __END__
             %a{:href=>"/de"} <img src="/flags/de.gif" border="0" />
             %a{:href=>"/cn"} <img src="/flags/cn.gif" border="0" />
             %a{:href=>"/es"} <img src="/flags/es.gif" border="0" />
-            %a{:href=>"/fr"} <img src="/flags/fr.gif" border="0" />
         
 @@ index
 %h2

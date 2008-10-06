@@ -160,10 +160,10 @@ __END__
             %a{:href=>"http://github.com/seaofclouds/good-browser-bad-browser"} contribute
           %span.translate
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Translate &raquo;
-            %a{:href=>"/"} <img src="/flags/us.gif" alt="english" />
-            %a{:href=>"/de"} <img src="/flags/de.gif" alt="deutsch" />
-            %a{:href=>"/cn"} <img src="/flags/cn.gif" alt="中国" />
-            %a{:href=>"/es"} <img src="/flags/es.gif" alt="español" />
+            %a{:href=>"/", :title=>"english"} <img src="/flags/us.gif" alt="english" />
+            %a{:href=>"/de", :title=>"deutsch"} <img src="/flags/de.gif" alt="deutsch" />
+            %a{:href=>"/cn", :title=>"中国"} <img src="/flags/cn.gif" alt="中国" />
+            %a{:href=>"/es", :title=>"español"} <img src="/flags/es.gif" alt="español" />
         
 @@ index
 %h2

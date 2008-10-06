@@ -26,19 +26,19 @@ es:
   badge_toggle: obtener código
   take_challenge: prueba de su navegador
   
-de:
-  good: gut
-  good_intro: Sie
-  good_outro: " verwenden, eine gute Web-Browser." 
-  good_browser: gute Browser
-  good_badge_intro:  der Welt zeigen, die Sie interessieren Web-Standards und setzen Sie den Browser Herausforderung Badge auf Ihrer Website.
-  bad:  schlecht
-  bad_intro: Gönnen Sie sich etwas Gutes.
-  bad_outro: Upgrade auf <a href='http://www.apple.com/safari/download/'>safari</a> oder <a href='http://firefox.com/'>firefox</a> heute!
-  bad_browser: schlecht Browser
-  bad_badge_intro: auch wenn Sie einen schlechten Browser, können Sie noch zeigen Sie Ihr Gespür für Web-Standards. grünes Licht und setzen Sie den Browser Herausforderung Badge auf Ihrer Website.
-  badge_toggle: Code abrufen
-  take_challenge: nehmen Sie die Browser Herausforderung
+  de:
+   good: Gut
+   good_intro: Sie benutzen
+   good_outro: ", einen guten Webbrowser."
+   good_browser: Guter Browser
+   good_badge_intro:  Zeigen Sie der Welt, dass Ihnen Webstandards wichtig sind, indem Sie das "Browser Challenge Badge" auf Ihre Website setzen.
+   bad:  Schlecht
+   bad_intro: Tun Sie sich etwas gutes.
+   bad_outro: Installieren Sie noch heute <a href='http://www.apple.com/safari/download/'>Safari</a> oder <a href='http://firefox.com/'>Firefox</a>!
+   bad_browser: Schlechter Browser
+   bad_badge_intro:  Obwohl Sie gerade einen schlechten Browser verwenden, können Sie trotzdem Ihr Interesse an Webstandards demonstrieren. Setzen Sie das "Browser Challange Badge" auf Ihre Website.
+   badge_toggle: Zum Code wechseln
+   take_challenge: Stellen Sie sich der "Browser Challenge"
   
 fr:
    good: bien

@@ -265,18 +265,6 @@ body
         :height 10em
         :line-height 1.5em
         :font-size 85%
-  #footer
-    :font-size .85em
-    :color #aaa
-    :padding 1em
-    :font-family verdana, sans-serif
-    a
-      :color #aaa
-      &:hover #fff
-    %span.translate
-      img
-        :margin-bottom -.2em
-        :border none
 
 // browser challenge badge
         
@@ -338,6 +326,15 @@ body
     a
       :color = !green + #777
 
+#footer
+  :font-size .85em
+  :padding 1em
+  :font-family verdana, sans-serif
+  .translate
+    img
+      :border-style none !important
+      :margin-bottom -.2em
+            
 @@ mobile_safari
 body
   :padding-left 1em

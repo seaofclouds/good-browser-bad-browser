@@ -276,6 +276,7 @@ body
     %span.translate
       img
         :margin-bottom -.2em
+        :border none
 
 // browser challenge badge
         

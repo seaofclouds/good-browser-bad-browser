@@ -153,17 +153,17 @@ __END__
         = yield
       #footer 
         <script src="http://static.getclicky.com/38270.js" type="text/javascript"></script>
-        <noscript><img alt="Clicky" src="http://in.getclicky.com/38270-db5.gif" /></noscript>
+        <noscript><p><img alt="Clicky" src="http://in.getclicky.com/38270-db5.gif" /></p></noscript>
         %p
           %span.copyright
             something nifty from <a href="http://www.seaofclouds.com">seaofclouds</a>&trade; | 
             %a{:href=>"http://github.com/seaofclouds/good-browser-bad-browser"} contribute
           %span.translate
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Translate &raquo;
-            %a{:href=>"/"} <img src="/flags/us.gif" border="0" alt="english" />
-            %a{:href=>"/de"} <img src="/flags/de.gif" border="0" alt="deutsch" />
-            %a{:href=>"/cn"} <img src="/flags/cn.gif" border="0" alt="中国" />
-            %a{:href=>"/es"} <img src="/flags/es.gif" border="0" alt="español" />
+            %a{:href=>"/"} <img src="/flags/us.gif" alt="english" />
+            %a{:href=>"/de"} <img src="/flags/de.gif" alt="deutsch" />
+            %a{:href=>"/cn"} <img src="/flags/cn.gif" alt="中国" />
+            %a{:href=>"/es"} <img src="/flags/es.gif" alt="español" />
         
 @@ index
 %h2

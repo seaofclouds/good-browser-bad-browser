@@ -166,7 +166,7 @@ __END__
             %a{:href=>"/es", :title=>"español"} <img src="/flags/es.gif" alt="español" />
         
 @@ index
-%h2
+%h2.content-header
   - if @goodorbad == "bad"
     = @bad
   - else
@@ -218,11 +218,11 @@ body
     :padding-bottom 2em
     h2
       :font-weight normal
-      :font-size 15em
+      :font-size 13em
       :font-family georgia, serif
     h3, h4
       :font-weight normal
-      :font-size 1.74em
+      :font-size 1.5em
       :padding-top .5em
     .content-body
       :padding-top 3em
@@ -246,7 +246,7 @@ body
         :background-repeat no-repeat
         :background-position right center
         h1
-          :font-size 120%
+          :font-size 110%
           :text-transform lowercase
         .badge_toggle
           :white-space nowrap
@@ -328,7 +328,7 @@ body
 
 #footer
   :font-size .85em
-  :padding 1em
+  :padding-bottom 1em
   :font-family verdana, sans-serif
   .translate
     img

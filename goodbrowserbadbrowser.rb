@@ -60,7 +60,8 @@ helpers do
       %w[en english us],
       %w[de deutsch],
       %w[cn 中国],
-      %w[es español]
+      %w[es español],
+      %w[fr français]
     ]
     languages.map do |(code,language,flag)|
       %(<a href="/#{code == "en" ? nil : code}" title="#{language}"><img src="/flags/#{flag || code}.gif" alt= "#{language}" />\n)
@@ -69,6 +70,8 @@ helpers do
   
 end
 
+# === routes ===
+
 # index, english
 get '/' do
   CONFIG["en"].each { |key, value| instance_variable_set("@#{key}", value) }
@@ -76,6 +79,7 @@ get '/' do
   whichbrowser
   haml :index
 end
+
 # translations
 get '/:lang' do
   if CONFIG[params[:lang]]
@@ -87,6 +91,7 @@ get '/:lang' do
     redirect "http://translate.google.com/translate?u=http%3A%2F%2Fbrowserchallenge.com%2F&hl=en&ie=UTF-8&sl=en&tl="+params[:lang]
   end 
 end
+
 # test translation good or bad
 get '/:lang/:goodorbad' do
   if params[:goodorbad] == "good" || params[:goodorbad] == "bad"
@@ -100,7 +105,6 @@ get '/:lang/:goodorbad' do
 end
 
 # stylesheets
-
 get '/main.css' do
   content_type 'text/css', :charset => 'utf-8'
   sass :main
@@ -113,6 +117,9 @@ get '/ie.css' do
   content_type 'text/css', :charset => 'utf-8'
   sass :ie
 end
+
+# === templates ===
+
 use_in_file_templates!
 
 __END__

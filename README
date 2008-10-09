@@ -8,7 +8,7 @@ tshirts forthcoming. maybe...
 
 bring your code slinging skills to: http://github.com/seaofclouds/good-browser-bad-browser/ and help the cause!
 
-TRANSLATIONS > we recently added translations for english, chinese, german, and spanish. please help us expand our set of translations by contributing your language. to submit a translation, visit http://gist.github.com/14732 and fork. then, translate from english to your language and save!
+TRANSLATIONS > we recently added translations for english, chinese, german, spanish and french. please help us expand our set of translations by contributing your language. to submit a translation, visit http://gist.github.com/14732 and fork. then, translate from english to your language and save!
 
 COUNTER > one goal of this project is to add a simple counter that gathers and displays statistics for good and bad browsers. the counter should work with the javascript widget, so when the widget loads on a page, the sinatra script gets pinged to update the counter. if you have any tips to make this work, make contact.
 

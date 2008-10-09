@@ -78,10 +78,15 @@ get '/' do
 end
 # translations
 get '/:lang' do
-  CONFIG[params[:lang]].each { |key, value| instance_variable_set("@#{key}", value) }
-  goodorbad
-  whichbrowser
-  haml :index
+  if CONFIG[params[:lang]]
+    CONFIG[params[:lang]].each { |key, value| instance_variable_set("@#{key}", value) }
+    goodorbad
+    whichbrowser
+    haml :index
+  else
+    headers["Status"] = "301 Moved Permanently"
+    redirect("/")
+  end 
 end
 # google translations
 get '/t/:lang' do

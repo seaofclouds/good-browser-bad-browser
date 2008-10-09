@@ -84,20 +84,19 @@ get '/:lang' do
     whichbrowser
     haml :index
   else
-    headers["Status"] = "301 Moved Permanently"
-    redirect("/")
+    redirect "http://translate.google.com/translate?u=http%3A%2F%2Fbrowserchallenge.com%2F&hl=en&ie=UTF-8&sl=en&tl="+params[:lang]
   end 
 end
-# google translations
-get '/t/:lang' do
-  redirect "http://translate.google.com/translate_c?hl=en&sl=en&tl="+params[:lang]+"&u=http://browserchallenge.com/"
-end
-# test
+# test translation good or bad
 get '/:lang/:goodorbad' do
-  CONFIG[params[:lang]].each { |key, value| instance_variable_set("@#{key}", value) }
-  @goodorbad = params[:goodorbad]
-  whichbrowser
-  haml :index
+  if params[:goodorbad] == "good" || params[:goodorbad] == "bad"
+    CONFIG[params[:lang]].each { |key, value| instance_variable_set("@#{key}", value) }
+    @goodorbad = params[:goodorbad]
+    whichbrowser
+    haml :index
+  else
+    redirect "/#{params[:lang]}"
+  end
 end
 
 # stylesheets

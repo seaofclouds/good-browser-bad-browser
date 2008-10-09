@@ -54,6 +54,19 @@ helpers do
       @goodorbad = "bad"
     end
   end
+  def translation_links
+    lang = [
+      %w["" english us], 
+      %w[de deutsch],
+      %w[cn 中国],
+      %w[es español]
+    ]
+    list_items = lang.inject([]) do |sum, item|
+      item = %(<a href="/#{item[0]}" title="#{item[1]}"><img src='/flags/#{item[2]||item[0]}.gif' alt='#{item[1]}' /></a>\n)
+      sum << item
+    end
+  end
+  
 end
 
 # views
@@ -160,11 +173,8 @@ __END__
             %a{:href=>"http://github.com/seaofclouds/good-browser-bad-browser"} contribute
           %span.translate
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Translate &raquo;
-            %a{:href=>"/", :title=>"english"} <img src="/flags/us.gif" alt="english" />
-            %a{:href=>"/de", :title=>"deutsch"} <img src="/flags/de.gif" alt="deutsch" />
-            %a{:href=>"/cn", :title=>"中国"} <img src="/flags/cn.gif" alt="中国" />
-            %a{:href=>"/es", :title=>"español"} <img src="/flags/es.gif" alt="español" />
-        
+            %span.translations= translation_links
+            
 @@ index
 %h2.content-header
   - if @goodorbad == "bad"

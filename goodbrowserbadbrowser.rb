@@ -12,7 +12,7 @@ not_found do
 end
 
 configure do
-  # Load our configuration file.
+  # Load translations file.
   CONFIG = YAML.load_file("translations.yml")
 end
 
@@ -69,54 +69,31 @@ helpers do
   
 end
 
-# views
-
+# index, english
 get '/' do
   CONFIG["en"].each { |key, value| instance_variable_set("@#{key}", value) }
   goodorbad
   whichbrowser
   haml :index
 end
-
-# test views
-
-get '/bad' do
-  CONFIG["en"].each { |key, value| instance_variable_set("@#{key}", value) }
-  @goodorbad = "bad"
-  haml :index
-end
-get '/bad/:lang' do
-  CONFIG[params[:lang]].each { |key, value| instance_variable_set("@#{key}", value) }
-  @goodorbad = "bad"
-  whichbrowser
-  haml :index
-end
-get '/good' do
-  CONFIG["en"].each { |key, value| instance_variable_set("@#{key}", value) }
-  @goodorbad = "good"
-  whichbrowser
-  haml :index
-end
-get '/good/:lang' do
-  CONFIG[params[:lang]].each { |key, value| instance_variable_set("@#{key}", value) }
-  @goodorbad = "good"
-  whichbrowser
-  haml :index
-end
-
 # translations
-
 get '/:lang' do
   CONFIG[params[:lang]].each { |key, value| instance_variable_set("@#{key}", value) }
   goodorbad
   whichbrowser
   haml :index
 end
-
+# google translations
 get '/t/:lang' do
   redirect "http://translate.google.com/translate_c?hl=en&sl=en&tl="+params[:lang]+"&u=http://browserchallenge.com/"
 end
-
+# test
+get '/:lang/:goodorbad' do
+  CONFIG[params[:lang]].each { |key, value| instance_variable_set("@#{key}", value) }
+  @goodorbad = params[:goodorbad]
+  whichbrowser
+  haml :index
+end
 
 # stylesheets
 

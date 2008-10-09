@@ -54,16 +54,16 @@ helpers do
       @goodorbad = "bad"
     end
   end
+
   def translation_links
-    lang = [
-      %w[en english us], 
+    languages = [
+      %w[en english us],
       %w[de deutsch],
       %w[cn 中国],
       %w[es español]
     ]
-    list_items = lang.inject([]) do |sum, item|
-      item = %(<a href="/#{item[0] unless item[0] == 'en'}" title="#{item[1]}"><img src='/flags/#{item[2]||item[0]}.gif' alt='#{item[1]}' /></a>\n)
-      sum << item
+    languages.map do |(code,language,flag)|
+      %(<a href="/#{code == "en" ? nil : code}" title="#{language}"><img src="/flags/#{flag || code}.gif" alt= "#{language}" />\n)
     end
   end
   

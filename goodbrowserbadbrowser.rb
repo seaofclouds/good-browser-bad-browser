@@ -56,13 +56,13 @@ helpers do
   end
   def translation_links
     lang = [
-      %w["" english us], 
+      %w[en english us], 
       %w[de deutsch],
       %w[cn 中国],
       %w[es español]
     ]
     list_items = lang.inject([]) do |sum, item|
-      item = %(<a href="/#{item[0]}" title="#{item[1]}"><img src='/flags/#{item[2]||item[0]}.gif' alt='#{item[1]}' /></a>\n)
+      item = %(<a href="/#{item[0] unless item[0] == 'en'}" title="#{item[1]}"><img src='/flags/#{item[2]||item[0]}.gif' alt='#{item[1]}' /></a>\n)
       sum << item
     end
   end

@@ -18,25 +18,26 @@ end
 
 helpers do
   # Browser Checks
-  def mobile_safari?
-    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
+  def browser?(b)
+    user_agents = {
+      :ff   => /Firefox/,
+      :iphone=> /(Mobile\/.+Safari)/,
+      :safari=> /Safari/,
+      :ie   => /MSIE/,
+      :opera => /Opera/
+    }
+    user_agents[b] &&
+      request.env["HTTP_USER_AGENT"] &&
+      request.env["HTTP_USER_AGENT"] =~ user_agents[b]
   end
-  def ie?
-    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"].include?("MSIE")
-  end
-  def safari?
-    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"].include?("Safari")
-  end
-  def firefox?
-    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"].include?("Firefox")
-  end
+
   # which browser
   def whichbrowser
-    if mobile_safari?
+    if browser?(:iphone)
       @browser="<a href='http://www.apple.com/iphone/features/safari.html'>mobile safari</a>"
-    elsif safari?
+    elsif browser?(:safari)
       @browser="<a href='http://www.apple.com/safari/download/'>safari</a>"
-    elsif firefox?
+    elsif browser?(:ff)
       @browser="<a href='http://www.firefox.com/'>firefox</a>"
     end
   end
@@ -44,11 +45,7 @@ helpers do
   def goodorbad
     if @goodorbad
       @goodorbad = @goodorbad
-    elsif mobile_safari?
-      @goodorbad = "good"
-    elsif safari?
-      @goodorbad = "good"
-    elsif firefox?
+    elsif browser?(:iphone) || browser?(:safari) || browser?(:ff)
       @goodorbad = "good"
     else
       @goodorbad = "bad"
@@ -137,9 +134,9 @@ __END__
     %meta{'http-equiv'=>"content-type", :content=>"text/html; charset=UTF-8"}/
     %link{:rel => "shortcut icon", :href => "/favicon_"+"#{@goodorbad}"+".ico"}
     %link{:href=>"/main.css", :media=>"all", :rel=>"stylesheet", :type=>"text/css"}/
-    - if ie?
+    - if browser?(:ie)
       %link{:href=>"/ie.css", :media=>"all", :rel=>"stylesheet", :type=>"text/css"}/
-    - if mobile_safari?
+    - if browser?(:iphone)
       %link{:href=>"/mobile_safari.css", :media=>"all", :rel=>"stylesheet", :type=>"text/css"}/
       %meta{:name => "viewport", :content => "width = device-width, initial-scale = 1.0"}/
     %script{:type=>"text/javascript"}
@@ -175,7 +172,7 @@ __END__
     %h4= @bad_outro
   - else
     %h3= "#{@good_intro} #{@browser}#{@good_outro}"
-- unless mobile_safari?
+- unless browser?(:iphone)
   .content-footer
     %table{:cellspacing=>"0", :cellpadding=>"0", :border=>"0"}
       %tr

@@ -30,7 +30,6 @@ helpers do
       request.env["HTTP_USER_AGENT"] &&
       request.env["HTTP_USER_AGENT"] =~ user_agents[b]
   end
-
   # which browser
   def whichbrowser
     if browser?(:iphone)
@@ -191,9 +190,9 @@ __END__
             %a#browserchallenge_badge{:href=>'/'+"#{params[:lang]}", :class=>'browserchallenge_goodbrowser'}= @good_browser
 
     #toggle_body{:style=>"display:none"}
-      %textarea{:rows=>"7", :cols=>"12"}
-        = "&lt;style type=&quot;text/css&quot;&gt; #browserchallenge_badge { font-family: georgia, serif !important; text-decoration: none !important; font-weight: normal !important; font-size: 180% !important; line-height: 1.3em !important; -moz-border-radius: 3px !important; -webkit-border-radius: 3px !important; padding: .3em !important; color: #fff !important; white-space: nowrap !important; } .browserchallenge_goodbrowser { background-color: #2e7f3a !important; color: #fff !important; background-image: url(http://browserchallenge.com/badge-bg-good.png) !important; background-repeat: repeat-x !important; background-position: center bottom !important; } .browserchallenge_goodbrowser:hover { background-color: #1d6e29 !important; } .browserchallenge_badbrowser { background-color: #7f0100 !important; color: #fff !important; } .browserchallenge_badbrowser:hover { background-color: #6e0000 !important; } &lt;/style&gt; &lt;script type=&quot;text/javascript&quot;&gt;var good_browser='"+@good_browser+"'; var bad_browser='"+@bad_browser+"'; var lang='"+"#{params[:lang]}"+"'&lt;/script&gt;&lt;script src=&quot;http://browserchallenge.com/widget-text.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/"+"#{params[:lang]}"+"&quot;&gt;"+@take_challenge+"&lt;/a&gt;&lt;/noscript&gt;"
-
+      %textarea{:rows=>"5", :cols=>"12"}
+        = "&lt;script type=&quot;text/javascript&quot;&gt;var style='inline'; var good_browser='"+@good_browser+"'; var bad_browser='"+@bad_browser+"'; var lang='"+"#{params[:lang]}"+"'&lt;/script&gt;&lt;script src=&quot;http://browserchallenge.com/widget-text.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;noscript&gt;&lt;a href=&quot;http://browserchallenge.com/"+"#{params[:lang]}"+"&quot;&gt;"+@take_challenge+"&lt;/a&gt;&lt;/noscript&gt;"
+    
 @@ main
 !green = #2E7F3A
 !red = #7f0100
@@ -252,12 +251,11 @@ body
       #toggle_body
         :padding 0 1em 1em 1em
       textarea
-        :margin-top 1em
         :width 100%
         :border 1px solid #ccc
         :word-break break-word
         :font-family monaco, monospace
-        :height 10em
+        :height 8em
         :line-height 1.5em
         :font-size 85%
 

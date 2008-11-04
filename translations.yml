@@ -41,18 +41,18 @@ de:
   take_challenge: Stellen Sie sich der "Browser Challenge"
   
 fr:
-   good: bien
-   good_intro: vous utilisez
-   good_outro: ", un bon navigateur web."
-   good_browser: bon navigateur
-   good_badge_intro: montrer au monde vous vous souciez de standards Web et installer le navigateur défi badge sur votre site.
-   bad: mauvaise
-   bad_intro: Accordez-vous quelque chose de bien.
-   bad_outro: la mise à niveau vers <a href='http://www.apple.com/safari/download/'>safari</a> ou <a href='http://firefox.com/'>firefox</a> Aujourd'hui!
-   bad_browser: mauvaise navigateur
-   bad_badge_intro: même si vous utilisez un mauvais navigateur, vous pouvez quand même présenter votre flair pour les standards du Web. aller de l'avant et mettre le navigateur défi badge sur votre site.
-   badge_toggle: obtenir le code
-   take_challenge: prendre le navigateur défi
+  good: bon
+  good_intro: vous utilisez
+  good_outro: ", un bon logiciel navigateur."
+  good_browser: bon navigateur
+  good_badge_intro: Exprimez au monde entier votre que vous vous souciez des standards Web et insérez le boutton du challenge navigateur sur votre site.
+  bad: mauvais
+  bad_intro: offrez-vous quelquechose de bien.
+  bad_outro: migrez vers <a href='http://www.apple.com/safari/download/'>safari</a> ou <a href='http://firefox.com/'>firefox</a> dès aurjoud'hui!
+  bad_browser: mauvais navigateur
+  bad_badge_intro: Malgré le fait que vous utilisez un mauvais navigateur, ils vous est quand même possible de démontrer votre flair pour les standards Web. Allez de l'avant en insérant le button du challenge navigateur sur votre site.
+  badge_toggle: accéder au code
+  take_challenge: Essayez le challenge navigateur
    
 cn:
   good: 棒

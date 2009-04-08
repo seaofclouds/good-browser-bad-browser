@@ -72,6 +72,20 @@ get '/' do
   haml :index
 end
 
+# stylesheets
+get '/main.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass :main
+end
+get '/mobile_safari.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass :mobile_safari
+end
+get '/ie.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass :ie
+end
+
 # translations
 get '/:lang' do
   if CONFIG[params[:lang]]
@@ -94,20 +108,6 @@ get '/:lang/:goodorbad' do
   else
     redirect "/#{params[:lang]}"
   end
-end
-
-# stylesheets
-get '/main.css' do
-  content_type 'text/css', :charset => 'utf-8'
-  sass :main
-end
-get '/mobile_safari.css' do
-  content_type 'text/css', :charset => 'utf-8'
-  sass :mobile_safari
-end
-get '/ie.css' do
-  content_type 'text/css', :charset => 'utf-8'
-  sass :ie
 end
 
 # === templates ===

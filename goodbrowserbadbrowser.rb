@@ -1,7 +1,3 @@
-#use latest version of sinatra
-$LOAD_PATH.unshift(File.dirname(__FILE__) + '/vendor/sinatra/lib')
-
-# goodbrowserbadbrowser.rb
 require 'rubygems'
 require 'sinatra'
 require 'yaml'

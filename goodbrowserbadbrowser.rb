@@ -94,7 +94,7 @@ get '/:lang' do
     whichbrowser
     haml :index
   else
-    redirect "http://translate.google.com/translate?u=http%3A%2F%2Fbrowserchallenge.com%2F&hl=en&ie=UTF-8&sl=en&tl="+params[:lang]
+    redirect "http://translate.google.com/translate?prev=hp&hl=en&js=n&u=http%3A%2F%2Fbrowserchallenge.com&sl=en&tl="+params[:lang]
   end 
 end
 
@@ -154,6 +154,16 @@ __END__
           %span.translate
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Translate &raquo;
             %span.translations= translation_links
+      :plain
+        <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+        try {
+        var pageTracker = _gat._getTracker("UA-8287528-1");
+        pageTracker._trackPageview();
+        } catch(err) {}</script>
             
 @@ index
 %h2.content-header
